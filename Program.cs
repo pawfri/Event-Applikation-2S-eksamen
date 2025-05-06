@@ -23,5 +23,3 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
-
-Console.WriteLine("Dette er en test");
