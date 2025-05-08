@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 
+
 namespace Event_Applikation.Pages.Events;
 
 
@@ -33,8 +34,9 @@ public class CreateModel : PageModel
 		LoadKategorier();
 	}
 
-	public IActionResult OnPost()
+	public IActionResult OnPostSubmit()
 	{
+
 		if (!ModelState.IsValid || NewEvent == null)
 		{
 			return Page();

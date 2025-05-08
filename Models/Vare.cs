@@ -18,7 +18,6 @@ public partial class Vare
     [StringLength(45)]
     public string VareNavn { get; set; }
 
-    [Column("VareType_Id")]
     public int VareTypeId { get; set; }
 
     [InverseProperty("Vare")]

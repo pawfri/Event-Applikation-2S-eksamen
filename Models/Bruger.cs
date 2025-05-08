@@ -30,10 +30,8 @@ public partial class Bruger
     [StringLength(45)]
     public string Email { get; set; }
 
-    [Column("Campus_Id")]
     public int CampusId { get; set; }
 
-    [Column("Rolle_Id")]
     public int RolleId { get; set; }
 
     [ForeignKey("CampusId")]

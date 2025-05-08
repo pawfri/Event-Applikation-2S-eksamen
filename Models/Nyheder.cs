@@ -22,6 +22,9 @@ public partial class Nyheder
     [StringLength(45)]
     public string BeskedType { get; set; }
 
-    [InverseProperty("Nyheder")]
-    public virtual ICollection<Event> Events { get; set; } = new List<Event>();
+    public int EventId { get; set; }
+
+    [ForeignKey("EventId")]
+    [InverseProperty("Nyheders")]
+    public virtual Event Event { get; set; }
 }
