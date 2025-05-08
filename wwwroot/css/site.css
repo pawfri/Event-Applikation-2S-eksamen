@@ -20,3 +20,39 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+header {
+    color: #FFF07C
+}
+
+/* Styles for the EventCreate Razor Page */
+.event-create-page .content {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.event-create-page h1 {
+    color: #333;
+    font-size: 24px;
+}
+
+.event-create-page form {
+    margin-top: 20px;
+}
+
+.event-create-page .form-group {
+    margin-bottom: 15px;
+}
+
+.event-create-page .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+    .event-create-page .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+/*Styles for the EventCreate Razor Page*/

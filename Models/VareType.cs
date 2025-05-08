@@ -12,12 +12,12 @@ namespace Event_Applikation.Models;
 public partial class VareType
 {
     [Key]
-    public int VareTypeId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     [StringLength(45)]
     public string Navn { get; set; }
 
-    [InverseProperty("VareTypeVareType")]
+    [InverseProperty("VareType")]
     public virtual ICollection<Vare> Vares { get; set; } = new List<Vare>();
 }

@@ -38,131 +38,132 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
     public virtual DbSet<VareType> VareTypes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
         => optionsBuilder.UseSqlServer("Data Source=mssql15.unoeuro.com;Initial Catalog=mvp2_dk_db_eventapplikation;Persist Security Info=True;User ID=mvp2_dk;Password=tkxf4wy25DdgFz6aRHbe");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Bruger>(entity =>
         {
-            entity.HasKey(e => e.BrugerId).HasName("PK__Bruger__6FA2FB100D40047E");
+            entity.HasKey(e => e.Id).HasName("PK__Bruger__3214EC07AC958AF1");
 
-            entity.Property(e => e.BrugerId).ValueGeneratedNever();
+            entity.Property(e => e.Id).ValueGeneratedNever();
 
-            entity.HasOne(d => d.CampusCampus).WithMany(p => p.Brugers)
+            entity.HasOne(d => d.Campus).WithMany(p => p.Brugers)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Bruger__Campus_C__5629CD9C");
+                .HasConstraintName("FK__Bruger__Campus_I__5629CD9C");
 
-            entity.HasOne(d => d.RolleRolle).WithMany(p => p.Brugers)
+            entity.HasOne(d => d.Rolle).WithMany(p => p.Brugers)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Bruger__Rolle_Ro__571DF1D5");
+                .HasConstraintName("FK__Bruger__Rolle_Id__571DF1D5");
 
-            entity.HasMany(d => d.EventEvents).WithMany(p => p.BrugerBrugers)
+            entity.HasMany(d => d.Events).WithMany(p => p.Brugers)
                 .UsingEntity<Dictionary<string, object>>(
                     "BrugerAdministrererEvent",
                     r => r.HasOne<Event>().WithMany()
-                        .HasForeignKey("EventEventId")
+                        .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK__BrugerAdm__Event__60A75C0F"),
                     l => l.HasOne<Bruger>().WithMany()
-                        .HasForeignKey("BrugerBrugerId")
+                        .HasForeignKey("BrugerId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK__BrugerAdm__Bruge__5FB337D6"),
                     j =>
                     {
-                        j.HasKey("BrugerBrugerId", "EventEventId").HasName("PK__BrugerAd__C9066C6DA3B35E24");
+                        j.HasKey("BrugerId", "EventId").HasName("PK__BrugerAd__7E63400C103D6AC0");
                         j.ToTable("BrugerAdministrererEvent");
-                        j.IndexerProperty<int>("BrugerBrugerId").HasColumnName("Bruger_BrugerId");
-                        j.IndexerProperty<int>("EventEventId").HasColumnName("Event_EventId");
+                        j.IndexerProperty<int>("BrugerId").HasColumnName("Bruger_Id");
+                        j.IndexerProperty<int>("EventId").HasColumnName("Event_Id");
                     });
         });
 
         modelBuilder.Entity<Campus>(entity =>
         {
-            entity.HasKey(e => e.CampusId).HasName("PK__Campus__FD598DD60C5815F3");
+            entity.HasKey(e => e.Id).HasName("PK__Campus__3214EC07ED0536DF");
 
-            entity.Property(e => e.CampusId).ValueGeneratedNever();
+            entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<CampusHarLagerbeholdning>(entity =>
         {
-            entity.HasKey(e => new { e.VareVareId, e.CampusCampusId }).HasName("PK__CampusHa__091F710E2C2C864C");
+            entity.HasKey(e => new { e.VareId, e.CampusId }).HasName("PK__CampusHa__23B94E1E80390066");
 
-            entity.HasOne(d => d.CampusCampus).WithMany(p => p.CampusHarLagerbeholdnings)
+            entity.HasOne(d => d.Campus).WithMany(p => p.CampusHarLagerbeholdnings)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__CampusHar__Campu__6754599E");
 
-            entity.HasOne(d => d.VareVare).WithMany(p => p.CampusHarLagerbeholdnings)
+            entity.HasOne(d => d.Vare).WithMany(p => p.CampusHarLagerbeholdnings)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__CampusHar__Vare___66603565");
         });
 
         modelBuilder.Entity<Event>(entity =>
         {
-            entity.HasKey(e => e.EventId).HasName("PK__Event__7944C8102E52CD6C");
+            entity.HasKey(e => e.Id).HasName("PK__Event__3214EC078B593A16");
 
-            entity.Property(e => e.EventId).ValueGeneratedNever();
+            entity.Property(e => e.Id).ValueGeneratedNever();
 
-            entity.HasOne(d => d.KategoriKategori).WithMany(p => p.Events)
+            entity.HasOne(d => d.Kategori).WithMany(p => p.Events)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Event__Kategori___4E88ABD4");
 
-            entity.HasOne(d => d.NyhederNyhed).WithMany(p => p.Events)
+            entity.HasOne(d => d.Nyheder).WithMany(p => p.Events)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Event__Nyheder_N__4F7CD00D");
+                .HasConstraintName("FK__Event__Nyheder_I__4F7CD00D");
         });
 
         modelBuilder.Entity<Kategori>(entity =>
         {
-            entity.HasKey(e => e.KategoriId).HasName("PK__Kategori__1782CC722E19CF04");
+            entity.HasKey(e => e.Id).HasName("PK__Kategori__3214EC07A451C6B0");
 
-            entity.Property(e => e.KategoriId).ValueGeneratedNever();
+            entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<Nyheder>(entity =>
         {
-            entity.HasKey(e => e.NyhedId).HasName("PK__Nyheder__1506A37469274D57");
+            entity.HasKey(e => e.Id).HasName("PK__Nyheder__3214EC071787EAB6");
 
-            entity.Property(e => e.NyhedId).ValueGeneratedNever();
+            entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<Rolle>(entity =>
         {
-            entity.HasKey(e => e.RolleId).HasName("PK__Rolle__36225527890427DC");
+            entity.HasKey(e => e.Id).HasName("PK__Rolle__3214EC07B4EAEFD7");
 
-            entity.Property(e => e.RolleId).ValueGeneratedNever();
+            entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<Tilmelding>(entity =>
         {
-            entity.HasKey(e => e.TilmeldtId).HasName("PK__Tilmeldi__DD2B1B6BBDB33E89");
+            entity.HasKey(e => e.Id).HasName("PK__Tilmeldi__3214EC07DD45BFF9");
 
-            entity.Property(e => e.TilmeldtId).ValueGeneratedNever();
+            entity.Property(e => e.Id).ValueGeneratedNever();
 
-            entity.HasOne(d => d.BrugerBruger).WithMany(p => p.Tilmeldings)
+            entity.HasOne(d => d.Bruger).WithMany(p => p.Tilmeldings)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Tilmeldin__Bruge__59FA5E80");
 
-            entity.HasOne(d => d.EventEvent).WithMany(p => p.Tilmeldings)
+            entity.HasOne(d => d.Event).WithMany(p => p.Tilmeldings)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Tilmeldin__Event__5AEE82B9");
         });
 
         modelBuilder.Entity<Vare>(entity =>
         {
-            entity.HasKey(e => e.VareId).HasName("PK__Vare__E1E51A012F187BC0");
+            entity.HasKey(e => e.Id).HasName("PK__Vare__3214EC0725DE7CAE");
 
-            entity.Property(e => e.VareId).ValueGeneratedNever();
+            entity.Property(e => e.Id).ValueGeneratedNever();
 
-            entity.HasOne(d => d.VareTypeVareType).WithMany(p => p.Vares)
+            entity.HasOne(d => d.VareType).WithMany(p => p.Vares)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Vare__VareType_V__6383C8BA");
+                .HasConstraintName("FK__Vare__VareType_I__6383C8BA");
         });
 
         modelBuilder.Entity<VareType>(entity =>
         {
-            entity.HasKey(e => e.VareTypeId).HasName("PK__VareType__9603CE253082E8AB");
+            entity.HasKey(e => e.Id).HasName("PK__VareType__3214EC079B94DD16");
 
-            entity.Property(e => e.VareTypeId).ValueGeneratedNever();
+            entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         OnModelCreatingPartial(modelBuilder);

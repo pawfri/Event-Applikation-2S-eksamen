@@ -12,8 +12,8 @@ namespace Event_Applikation.Models;
 public partial class Rolle
 {
     [Key]
-    public int RolleId { get; set; }
+    public int Id { get; set; }
 
-    [InverseProperty("RolleRolle")]
+    [InverseProperty("Rolle")]
     public virtual ICollection<Bruger> Brugers { get; set; } = new List<Bruger>();
 }

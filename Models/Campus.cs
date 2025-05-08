@@ -12,15 +12,15 @@ namespace Event_Applikation.Models;
 public partial class Campus
 {
     [Key]
-    public int CampusId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     [StringLength(45)]
     public string By { get; set; }
 
-    [InverseProperty("CampusCampus")]
+    [InverseProperty("Campus")]
     public virtual ICollection<Bruger> Brugers { get; set; } = new List<Bruger>();
 
-    [InverseProperty("CampusCampus")]
+    [InverseProperty("Campus")]
     public virtual ICollection<CampusHarLagerbeholdning> CampusHarLagerbeholdnings { get; set; } = new List<CampusHarLagerbeholdning>();
 }
