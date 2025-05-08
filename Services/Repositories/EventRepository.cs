@@ -27,7 +27,7 @@ public class EventRepository : IEventRepository
 
     public void Create(Event @event)
     {
-        _context.Events.Add(@event);
+		_context.Events.Add(@event);
         _context.SaveChanges(); // This writes to the database
     }
 }

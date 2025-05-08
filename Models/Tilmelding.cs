@@ -18,10 +18,8 @@ public partial class Tilmelding
 
     public int AntalTilmeldt { get; set; }
 
-    [Column("Bruger_Id")]
     public int BrugerId { get; set; }
 
-    [Column("Event_Id")]
     public int EventId { get; set; }
 
     [ForeignKey("BrugerId")]

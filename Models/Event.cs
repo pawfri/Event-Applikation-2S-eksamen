@@ -36,19 +36,14 @@ public partial class Event
     [StringLength(45)]
     public string Lokation { get; set; }
 
-    [Column("Kategori_Id")]
     public int KategoriId { get; set; }
-
-    [Column("Nyheder_Id")]
-    public int NyhederId { get; set; }
 
     [ForeignKey("KategoriId")]
     [InverseProperty("Events")]
     public virtual Kategori Kategori { get; set; }
 
-    [ForeignKey("NyhederId")]
-    [InverseProperty("Events")]
-    public virtual Nyheder Nyheder { get; set; }
+    [InverseProperty("Event")]
+    public virtual ICollection<Nyheder> Nyheders { get; set; } = new List<Nyheder>();
 
     [InverseProperty("Event")]
     public virtual ICollection<Tilmelding> Tilmeldings { get; set; } = new List<Tilmelding>();

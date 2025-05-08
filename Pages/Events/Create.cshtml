@@ -9,44 +9,44 @@
 <body>
     <form method="post">
         <div class="form-group">
-            <label asp-for="Event.Titel" class="control-label">titel</label>
-            <input asp-for="Event.Titel" class="form-control" />
+            <label asp-for="NewEvent.Titel" class="control-label">titel</label>
+            <input asp-for="NewEvent.Titel" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Event.Beskrivelse" class="control-label">beskrivelse</label>
-            <textarea asp-for="Event.Beskrivelse" class="form-control"></textarea>
+            <label asp-for="NewEvent.Beskrivelse" class="control-label">beskrivelse</label>
+            <textarea asp-for="NewEvent.Beskrivelse" class="form-control"></textarea>
         </div>
         <div class="form-group">
-            <label asp-for="Event.Lokation" class="control-label">lokation</label>
-            <input asp-for="Event.Lokation" class="form-control" />
+            <label asp-for="NewEvent.Lokation" class="control-label">lokation</label>
+            <input asp-for="NewEvent.Lokation" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Event.Dato" class="control-label">dato</label>
-            <input asp-for="Event.Dato" type="date" class="form-control" />
+            <label asp-for="NewEvent.Dato" class="control-label">dato</label>
+            <input asp-for="NewEvent.Dato" type="date" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Event.Starttid" class="control-label">start tidspunkt</label>
-            <input asp-for="Event.Starttid" type="time" class="form-control" />
+            <label asp-for="NewEvent.Starttid" class="control-label">start tidspunkt</label>
+            <input asp-for="NewEvent.Starttid" type="time" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Event.Sluttid" class="control-label">slut tidspunkt</label>
-            <input asp-for="Event.Sluttid" type="time" class="form-control" />
+            <label asp-for="NewEvent.Sluttid" class="control-label">slut tidspunkt</label>
+            <input asp-for="NewEvent.Sluttid" type="time" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Event.Antalsbegrænsning" class="control-label">
+            <label asp-for="NewEvent.Antalsbegrænsning" class="control-label">
                 max antal deltagere <em>udfyld kun hvis antalsbegrænsning</em>
             </label>
-            <input asp-for="Event.Antalsbegrænsning" class="form-control" />
+            <input asp-for="NewEvent.Antalsbegrænsning" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Event.KategoriId" class="control-label"></label>
-            <select asp-for="Event.KategoriId" asp-items="Model.KategoriList" class="form-control">
+            <label asp-for="NewEvent.KategoriId" class="control-label"></label>
+            <select asp-for="NewEvent.KategoriId" asp-items="Model.KategoriList" class="form-control">
                 <option value="">-- Vælg en kategori --</option>
             </select>
-            <span asp-validation-for="Event.KategoriId" class="text-danger"></span>
+            <span asp-validation-for="NewEvent.KategoriId" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="submit" value="create event" class="btn btn-primary" />
+            <button type="submit" class="btn btn-primary" asp-page-handler="Submit">Opret</button>
         </div>
     </form>
 </body>

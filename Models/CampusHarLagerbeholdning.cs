@@ -13,11 +13,9 @@ namespace Event_Applikation.Models;
 public partial class CampusHarLagerbeholdning
 {
     [Key]
-    [Column("Vare_Id")]
     public int VareId { get; set; }
 
     [Key]
-    [Column("Campus_Id")]
     public int CampusId { get; set; }
 
     public int AntalPåLager { get; set; }
