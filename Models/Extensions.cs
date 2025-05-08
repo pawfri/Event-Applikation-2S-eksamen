@@ -24,9 +24,13 @@ public partial class Event : IHasId
 		return new Event { Titel = titel, Starttid = Starttid, Sluttid = Sluttid, Beskrivelse = beskrivelse, Lokation = lokation };
 	}
 
+}
 
-
-
-
-
+public partial class Kategori : IHasId
+{
+	public override string ToString()
+	{
+		return $"[Kategori ID: {Id}]" +
+			$"Type: {Type}";
+	}
 }
