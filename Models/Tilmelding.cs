@@ -12,23 +12,23 @@ namespace Event_Applikation.Models;
 public partial class Tilmelding
 {
     [Key]
-    public int TilmeldtId { get; set; }
+    public int Id { get; set; }
 
     public DateOnly Dato { get; set; }
 
     public int AntalTilmeldt { get; set; }
 
-    [Column("Bruger_BrugerId")]
-    public int BrugerBrugerId { get; set; }
+    [Column("Bruger_Id")]
+    public int BrugerId { get; set; }
 
-    [Column("Event_EventId")]
-    public int EventEventId { get; set; }
+    [Column("Event_Id")]
+    public int EventId { get; set; }
 
-    [ForeignKey("BrugerBrugerId")]
+    [ForeignKey("BrugerId")]
     [InverseProperty("Tilmeldings")]
-    public virtual Bruger BrugerBruger { get; set; }
+    public virtual Bruger Bruger { get; set; }
 
-    [ForeignKey("EventEventId")]
+    [ForeignKey("EventId")]
     [InverseProperty("Tilmeldings")]
-    public virtual Event EventEvent { get; set; }
+    public virtual Event Event { get; set; }
 }

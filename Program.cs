@@ -1,7 +1,11 @@
+using Event_Applikation.Services.Interfaces;
+using Event_Applikation.Services.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IEventRepository, EventRepository>();
 
 var app = builder.Build();
 

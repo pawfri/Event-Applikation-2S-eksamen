@@ -12,19 +12,19 @@ namespace Event_Applikation.Models;
 public partial class Vare
 {
     [Key]
-    public int VareId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     [StringLength(45)]
     public string VareNavn { get; set; }
 
-    [Column("VareType_VareTypeId")]
-    public int VareTypeVareTypeId { get; set; }
+    [Column("VareType_Id")]
+    public int VareTypeId { get; set; }
 
-    [InverseProperty("VareVare")]
+    [InverseProperty("Vare")]
     public virtual ICollection<CampusHarLagerbeholdning> CampusHarLagerbeholdnings { get; set; } = new List<CampusHarLagerbeholdning>();
 
-    [ForeignKey("VareTypeVareTypeId")]
+    [ForeignKey("VareTypeId")]
     [InverseProperty("Vares")]
-    public virtual VareType VareTypeVareType { get; set; }
+    public virtual VareType VareType { get; set; }
 }

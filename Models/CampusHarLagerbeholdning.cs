@@ -8,25 +8,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Event_Applikation.Models;
 
-[PrimaryKey("VareVareId", "CampusCampusId")]
+[PrimaryKey("VareId", "CampusId")]
 [Table("CampusHarLagerbeholdning")]
 public partial class CampusHarLagerbeholdning
 {
     [Key]
-    [Column("Vare_VareId")]
-    public int VareVareId { get; set; }
+    [Column("Vare_Id")]
+    public int VareId { get; set; }
 
     [Key]
-    [Column("Campus_CampusId")]
-    public int CampusCampusId { get; set; }
+    [Column("Campus_Id")]
+    public int CampusId { get; set; }
 
     public int AntalPåLager { get; set; }
 
-    [ForeignKey("CampusCampusId")]
+    [ForeignKey("CampusId")]
     [InverseProperty("CampusHarLagerbeholdnings")]
-    public virtual Campus CampusCampus { get; set; }
+    public virtual Campus Campus { get; set; }
 
-    [ForeignKey("VareVareId")]
+    [ForeignKey("VareId")]
     [InverseProperty("CampusHarLagerbeholdnings")]
-    public virtual Vare VareVare { get; set; }
+    public virtual Vare Vare { get; set; }
 }

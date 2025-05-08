@@ -12,7 +12,7 @@ namespace Event_Applikation.Models;
 public partial class Nyheder
 {
     [Key]
-    public int NyhedId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     [StringLength(45)]
@@ -22,6 +22,6 @@ public partial class Nyheder
     [StringLength(45)]
     public string BeskedType { get; set; }
 
-    [InverseProperty("NyhederNyhed")]
+    [InverseProperty("Nyheder")]
     public virtual ICollection<Event> Events { get; set; } = new List<Event>();
 }

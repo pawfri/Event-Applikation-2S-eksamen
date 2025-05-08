@@ -12,12 +12,12 @@ namespace Event_Applikation.Models;
 public partial class Kategori
 {
     [Key]
-    public int KategoriId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     [StringLength(45)]
     public string Type { get; set; }
 
-    [InverseProperty("KategoriKategori")]
+    [InverseProperty("Kategori")]
     public virtual ICollection<Event> Events { get; set; } = new List<Event>();
 }

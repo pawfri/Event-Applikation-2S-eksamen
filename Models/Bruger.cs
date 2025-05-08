@@ -12,7 +12,7 @@ namespace Event_Applikation.Models;
 public partial class Bruger
 {
     [Key]
-    public int BrugerId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     [StringLength(45)]
@@ -30,24 +30,24 @@ public partial class Bruger
     [StringLength(45)]
     public string Email { get; set; }
 
-    [Column("Campus_CampusId")]
-    public int CampusCampusId { get; set; }
+    [Column("Campus_Id")]
+    public int CampusId { get; set; }
 
-    [Column("Rolle_RolleId")]
-    public int RolleRolleId { get; set; }
+    [Column("Rolle_Id")]
+    public int RolleId { get; set; }
 
-    [ForeignKey("CampusCampusId")]
+    [ForeignKey("CampusId")]
     [InverseProperty("Brugers")]
-    public virtual Campus CampusCampus { get; set; }
+    public virtual Campus Campus { get; set; }
 
-    [ForeignKey("RolleRolleId")]
+    [ForeignKey("RolleId")]
     [InverseProperty("Brugers")]
-    public virtual Rolle RolleRolle { get; set; }
+    public virtual Rolle Rolle { get; set; }
 
-    [InverseProperty("BrugerBruger")]
+    [InverseProperty("Bruger")]
     public virtual ICollection<Tilmelding> Tilmeldings { get; set; } = new List<Tilmelding>();
 
-    [ForeignKey("BrugerBrugerId")]
-    [InverseProperty("BrugerBrugers")]
-    public virtual ICollection<Event> EventEvents { get; set; } = new List<Event>();
+    [ForeignKey("BrugerId")]
+    [InverseProperty("Brugers")]
+    public virtual ICollection<Event> Events { get; set; } = new List<Event>();
 }

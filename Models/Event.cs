@@ -12,11 +12,13 @@ namespace Event_Applikation.Models;
 public partial class Event
 {
     [Key]
-    public int EventId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     [StringLength(45)]
     public string Titel { get; set; }
+
+    public DateOnly Dato { get; set; }
 
     [Column(TypeName = "datetime")]
     public DateTime Starttid { get; set; }
@@ -34,24 +36,24 @@ public partial class Event
     [StringLength(45)]
     public string Lokation { get; set; }
 
-    [Column("Kategori_KategoriId")]
-    public int KategoriKategoriId { get; set; }
+    [Column("Kategori_Id")]
+    public int KategoriId { get; set; }
 
-    [Column("Nyheder_NyhedId")]
-    public int NyhederNyhedId { get; set; }
+    [Column("Nyheder_Id")]
+    public int NyhederId { get; set; }
 
-    [ForeignKey("KategoriKategoriId")]
+    [ForeignKey("KategoriId")]
     [InverseProperty("Events")]
-    public virtual Kategori KategoriKategori { get; set; }
+    public virtual Kategori Kategori { get; set; }
 
-    [ForeignKey("NyhederNyhedId")]
+    [ForeignKey("NyhederId")]
     [InverseProperty("Events")]
-    public virtual Nyheder NyhederNyhed { get; set; }
+    public virtual Nyheder Nyheder { get; set; }
 
-    [InverseProperty("EventEvent")]
+    [InverseProperty("Event")]
     public virtual ICollection<Tilmelding> Tilmeldings { get; set; } = new List<Tilmelding>();
 
-    [ForeignKey("EventEventId")]
-    [InverseProperty("EventEvents")]
-    public virtual ICollection<Bruger> BrugerBrugers { get; set; } = new List<Bruger>();
+    [ForeignKey("EventId")]
+    [InverseProperty("Events")]
+    public virtual ICollection<Bruger> Brugers { get; set; } = new List<Bruger>();
 }

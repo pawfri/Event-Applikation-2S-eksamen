@@ -1,0 +1,62 @@
+﻿@page
+@model Event_Applikation.Pages.Events.CreateModel
+@{
+}
+@* <link rel="stylesheet" href="~/css/site.css/> *@
+
+<h1>Create New Events</h1>
+
+<body>
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="NewEvent.Titel" class="control-label">titel</label>
+            <input asp-for="NewEvent.Titel" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="NewEvent.Beskrivelse" class="control-label">beskrivelse</label>
+            <textarea asp-for="NewEvent.Beskrivelse" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewEvent.Lokation" class="control-label">lokation</label>
+            <input asp-for="NewEvent.Lokation" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="NewEvent.Dato" class="control-label">dato</label>
+            <input asp-for="NewEvent.Dato" type="date" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="NewEvent.Starttid" class="control-label">start tidspunkt</label>
+            <input asp-for="NewEvent.Starttid" type="time" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="NewEvent.Sluttid" class="control-label">slut tidspunkt</label>
+            <input asp-for="NewEvent.Sluttid" type="time" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="NewEvent.Antalsbegrænsning" class="control-label">
+                max antal deltagere <em>udfyld kun hvis antalsbegrænsning</em>
+            </label>
+            <input asp-for="NewEvent.Antalsbegrænsning" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="create event" class="btn btn-primary" />
+        </div>
+    </form>
+</body>
+
+
+
+
+
+
+@* <form method="post">
+	<div class="form-group">
+		<label asp-for="NewCase.TheProduct" class="control-label">Select Product</label>
+		<select asp-for="ProductId" asp-items="@Model.Products" class="form-control"></select>
+	</div>
+	<p>
+		<div class="form-group">
+			<input type="submit" value="Create" class="btn btn-primary" />
+		</div>
+	</p>
+</form>@**@
