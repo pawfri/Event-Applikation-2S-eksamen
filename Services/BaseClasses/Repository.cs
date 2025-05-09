@@ -8,14 +8,11 @@ namespace Event_Applikation.Services.BaseClasses;
 /// Base-klasse for en EFCore-baseret implementation af IRepository interfacet.
 /// </summary>
 public abstract class Repository<T> where T : class, IHasId
-	//   where T : class, IHasId
-	//where TContext : DbContext, new()
 {
     public List<T> All
     {
         get
         {
-            //using mvp2_dk_db_eventapplikationContext context = (mvp2_dk_db_eventapplikationContext)CreateDbContext();
             using DbContext context = CreateDbContext();
 
             return GetAllWithIncludes(context).ToList();

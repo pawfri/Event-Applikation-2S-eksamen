@@ -28,7 +28,10 @@ public class LoginModel : PageModel
         _brugerRepository = brugerRepository;
     }
 
-
+    /// <summary>
+    /// Håndterer login ved at validere loginoplysninger og opretter 
+    /// autentificeringscookie med brugerens identitet.
+    /// </summary>
     public async Task<IActionResult> OnPost()
     {
         CurrentUser = _brugerRepository.VerifyUser(Navn, Adgangskode);
@@ -47,15 +50,18 @@ public class LoginModel : PageModel
         return RedirectToPage("/Index");
     }
 
-
+    /// <summary>
+    /// Opretter et ClaimsPrincipal-objekt på den 
+    /// godkendte bruger og de tilhørende oplysninger.
+    /// </summary>
     private ClaimsPrincipal BuildClaimsPrincipal(Bruger bruger)
     {
-        // Opbyg Claims-liste
+        // Bygger en profil af brugeren (liste med Claim-pbjekter), der kan gemmes i en cookie og som kan identificere brugeren
         List<Claim> claims = new List<Claim>();
         claims.Add(new Claim(ClaimTypes.Name, bruger.Navn));
-        //claims.Add(new Claim(ClaimTypes.Role, bruger.Rolle)); ← Til senere implementering ift. Rolle
+        //claims.Add(new Claim(ClaimTypes.Role, bruger.Rolle));  //TODO: Til senere implementering ift. Rolle
 
-        // Opret ClaimsIdentity (claims plus Authentication-strategi)
+        // Opretter en identitet, der skal bruges med cookie-autentificering.
         ClaimsIdentity claimsIdentity = new ClaimsIdentity(
             claims, CookieAuthenticationDefaults.AuthenticationScheme);
 

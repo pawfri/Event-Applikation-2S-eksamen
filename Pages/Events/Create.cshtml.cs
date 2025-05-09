@@ -20,7 +20,6 @@ public class CreateModel : PageModel
 	[BindProperty]
 	public Event NewEvent { get; set; }
 
-	//public List<Kategori> KategoriList { get; set; }
 	public SelectList KategoriList { get; set; }
 
 	public CreateModel(mvp2_dk_db_eventapplikationContext context, IEventRepository eventrepo)
@@ -29,35 +28,36 @@ public class CreateModel : PageModel
 		_eventRepo = eventrepo;
 	}
 
+	/// <summary>
+	/// Når Create-siden hentes kaldes metoden: "LoadKategorier", så de kategorierne kan benyttes på siden.
+	/// </summary>
 	public void OnGet()
 	{
 		LoadKategorier();
 	}
 
-	public IActionResult OnPostSubmit()
+    /// <summary>
+    /// Håndterer at kontrollere og indsende input, for at oprette et nyt event.
+    /// </summary>
+    public IActionResult OnPostSubmit()
 	{
-
+		//Kontrol af gyldig data
 		if (!ModelState.IsValid || NewEvent == null)
 		{
 			return Page();
 		}
 
-		//_eventRepo.Add(NewEvent);
-		_eventRepo.Create(NewEvent);   //Laver nyt event og redirecter til en page
+        //Opretter et nyt event og omdirigerer til All-Event siden
+        _eventRepo.Create(NewEvent);
 		return RedirectToPage("All");
 	}
 
-	public void LoadKategorier()
+    /// <summary>
+    /// Metode, der indlæser kategorier fra databasen, for at de kan anvendes i drop-down menu i applikationen.
+    /// </summary>
+    public void LoadKategorier()
 	{
 		KategoriList = new SelectList(_context.Kategoris, "Id", "Type");
-
-		//KategoriList = _context.Kategoris
-		//	.Select(k => new Kategori
-		//	{
-		//		Id = k.Id.ToString()
-
-		//		Type = k.Type
-		//	}).ToList();
 	}
 
 }
