@@ -21,8 +21,9 @@ public class BrugerRepository : IBrugerRepository
         _context = context;
     }
 
-    //public List<Bruger> All { get; }
-
+    /// <summary>
+    /// Henter alle brugere fra databasen som en liste via GetAllWithIncludes-kaldet.
+    /// </summary>
     public List<Bruger> All
     {
         get
@@ -30,32 +31,36 @@ public class BrugerRepository : IBrugerRepository
             return GetAllWithIncludes(_context).ToList();
         }
     }
-
+    
+    /// <summary>
+    /// Håndterer verificering af at bruger oplysninger er korrekte 
+    /// og returnere brugeren såfremt input matcher, ellers null.
+    /// </summary>
     public Bruger? VerifyUser(string providedUserName, string providedPassword)
     {
         Bruger? bruger = All.FirstOrDefault(b => b.Navn == providedUserName);
 
-        // Bruger findes ikke eller har angivet forkert password
+        // Bruger findes ikke eller har angivet forkert adgangskode
         if (bruger == null || !VerifyPassword(bruger, providedPassword))
             return null;
 
         return bruger;
     }
 
-    private bool VerifyPassword(Bruger user, string providedPassword)
+    /// <summary>
+    /// Matcher om den angivne adgangskode matcher brugeren adgangskode.
+    /// </summary>
+    private bool VerifyPassword(Bruger bruger, string providedPassword)
     {
-        return user.Adgangskode == providedPassword;
+        return bruger.Adgangskode == providedPassword;
     }
 
-
-
-	protected virtual IQueryable<Bruger> GetAllWithIncludes(DbContext context)
+    /// <summary>
+    /// Laver en query (forespørgsl) på databasen, for at hente alle brugere fra databasen.
+    /// </summary>
+    protected virtual IQueryable<Bruger> GetAllWithIncludes(DbContext context)
 	{
 		return context.Set<Bruger>();
 	}
 
 }
-
-
-//Repository<Bruger, mvp2_dk_db_eventapplikationContext>,
-

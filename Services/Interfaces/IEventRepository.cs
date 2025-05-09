@@ -6,6 +6,5 @@ using Event_Applikation.Models;
 /// </summary>
 public interface IEventRepository
 {
-    //List<Event> All { get; }
     void Create(Event @event);
 }
