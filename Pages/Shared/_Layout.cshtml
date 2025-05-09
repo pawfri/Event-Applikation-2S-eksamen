@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Event_Applikation.Pages.BrugerLogin
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -31,6 +32,25 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Events/Create">Opret Event</a>
                         </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        @{
+                            if (LoginModel.CurrentUser == null) // Ingen logget ind -> vis "Log ind"
+                            {
+                                <li class="nav-item">
+                                    <a class="btn btn-primary" asp-area="" asp-page="/BrugerLogin/Login">Log ind</a>
+                                </li>
+                            }
+                            else // En User er logget ind -> vis navn og "Log ud"
+                            {
+                                <li class="nav-item nav-link text-dark me-3">
+                                    <span>Bruger:</span> <span><b>@LoginModel.CurrentUser.Navn</b></span>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-primary" asp-area="" asp-page="/BrugerLogin/Logout">Log ud</a>
+                                </li>
+                            }
+                        }
                     </ul>
                 </div>
             </div>

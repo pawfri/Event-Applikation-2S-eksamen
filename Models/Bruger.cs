@@ -30,9 +30,9 @@ public partial class Bruger
     [StringLength(45)]
     public string Email { get; set; }
 
-    public int CampusId { get; set; }
+    public int? CampusId { get; set; }
 
-    public int RolleId { get; set; }
+    public int? RolleId { get; set; }
 
     [ForeignKey("CampusId")]
     [InverseProperty("Brugers")]
