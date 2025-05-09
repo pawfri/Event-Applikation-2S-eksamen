@@ -45,7 +45,7 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
     {
         modelBuilder.Entity<Bruger>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Bruger__3214EC0762805D76");
+            entity.HasKey(e => e.Id).HasName("PK__Bruger__3214EC079DB6731C");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -70,21 +70,21 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
                         .HasConstraintName("FK__BrugerAdm__Bruge__5FB337D6"),
                     j =>
                     {
-                        j.HasKey("BrugerId", "EventId").HasName("PK__BrugerAd__7836B7912F4314A8");
+                        j.HasKey("BrugerId", "EventId").HasName("PK__BrugerAd__7836B7919142DBA4");
                         j.ToTable("BrugerAdministrererEvent");
                     });
         });
 
         modelBuilder.Entity<Campus>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Campus__3214EC07CA5732FC");
+            entity.HasKey(e => e.Id).HasName("PK__Campus__3214EC079F7AF461");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<CampusHarLagerbeholdning>(entity =>
         {
-            entity.HasKey(e => new { e.VareId, e.CampusId }).HasName("PK__CampusHa__9E3082DC0AC0D684");
+            entity.HasKey(e => new { e.VareId, e.CampusId }).HasName("PK__CampusHa__9E3082DC3C89409E");
 
             entity.HasOne(d => d.Campus).WithMany(p => p.CampusHarLagerbeholdnings)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -97,7 +97,7 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
 
         modelBuilder.Entity<Event>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Event__3214EC07A9B1AC01");
+            entity.HasKey(e => e.Id).HasName("PK__Event__3214EC07B5FE1D14");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -108,14 +108,14 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
 
         modelBuilder.Entity<Kategori>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Kategori__3214EC07F7279740");
+            entity.HasKey(e => e.Id).HasName("PK__Kategori__3214EC074B276EE5");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<Nyheder>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Nyheder__3214EC07E0D7DF38");
+            entity.HasKey(e => e.Id).HasName("PK__Nyheder__3214EC07F5CCCF63");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -126,14 +126,14 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
 
         modelBuilder.Entity<Rolle>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Rolle__3214EC07B769BFB0");
+            entity.HasKey(e => e.Id).HasName("PK__Rolle__3214EC07F4DE1397");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<Tilmelding>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Tilmeldi__3214EC07C4287DED");
+            entity.HasKey(e => e.Id).HasName("PK__Tilmeldi__3214EC07029E17DD");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -148,7 +148,7 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
 
         modelBuilder.Entity<Vare>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Vare__3214EC079819EA82");
+            entity.HasKey(e => e.Id).HasName("PK__Vare__3214EC07D8B04A2E");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -159,7 +159,7 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
 
         modelBuilder.Entity<VareType>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__VareType__3214EC07517B3ACD");
+            entity.HasKey(e => e.Id).HasName("PK__VareType__3214EC076675B7D6");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
         });
