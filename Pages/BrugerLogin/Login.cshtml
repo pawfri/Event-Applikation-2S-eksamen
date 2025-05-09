@@ -1,0 +1,25 @@
+﻿@page
+@model Event_Applikation.Pages.BrugerLogin.LoginModel
+@{
+}
+
+<h1 class="display-5 mb-3">Log på</h1>
+
+<div class="container">
+    <div>
+        @Model.FejlBesked
+    </div>
+    <form method="post">
+        <div class="form-group mb-3">
+            <label asp-for="Navn" class="control-label "></label>
+            <input asp-for="Navn" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Adgangskode" class="control-label"></label>
+            <input asp-for="Adgangskode" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <input type="submit" value="Log in" class="btn btn-outline-primary" />
+        </div>
+    </form>
+</div>
