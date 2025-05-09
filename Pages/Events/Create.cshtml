@@ -2,10 +2,10 @@
 @model Event_Applikation.Pages.Events.CreateModel
 @{
 }
-@* <link rel="stylesheet" href="~/css/site.css/> *@
+
 
 <h1>Create New Events</h1>
-
+@* <link rel="stylesheet" href="~/css/site.css /> *@
 <body>
     <form method="post">
         <div class="form-group">
@@ -33,10 +33,12 @@
             <input asp-for="NewEvent.Sluttid" type="time" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="NewEvent.Antalsbegrænsning" class="control-label">
-                Max antal deltagere <em>(udfyld kun hvis antalsbegrænsning)</em>
-            </label>
-            <input asp-for="NewEvent.Antalsbegrænsning" class="form-control" />
+            <input type="checkbox" asp-for="NewEvent.Antalsbegrænsning" />
+            <label asp-for="NewEvent.Antalsbegrænsning" class="control-label">Antalsbegrænsning</label>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewEvent.MaxDeltager" class="control-label">Max Antal Deltagere <em>(hvis Antalsbegrænsning)</em></label>
+            <input asp-for="NewEvent.MaxDeltager" class="form-control" />
         </div>
         <div class="form-group">
             <label asp-for="NewEvent.KategoriId" class="control-label">Kategori</label>
@@ -52,20 +54,3 @@
         </p>
     </form>
 </body>
-
-
-
-
-
-
-@* <form method="post">
-	<div class="form-group">
-		<label asp-for="NewCase.TheProduct" class="control-label">Select Product</label>
-		<select asp-for="ProductId" asp-items="@Model.Products" class="form-control"></select>
-	</div>
-	<p>
-		<div class="form-group">
-			<input type="submit" value="Create" class="btn btn-primary" />
-		</div>
-	</p>
-</form>@**@

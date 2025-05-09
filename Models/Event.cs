@@ -32,6 +32,8 @@ public partial class Event
 
     public bool Antalsbegrænsning { get; set; }
 
+    public int? MaxDeltager { get; set; }
+
     [Required]
     [StringLength(45)]
     public string Lokation { get; set; }
