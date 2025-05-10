@@ -5,13 +5,13 @@ using Event_Applikation.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Event_Applikation.Pages.Events;
 
 
-
-
+[Authorize(Roles = "Admin,Medlem")]
 public class CreateModel : PageModel
 {
 	private IEventRepository _eventRepo;

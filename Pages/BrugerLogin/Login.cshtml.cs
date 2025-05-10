@@ -59,7 +59,7 @@ public class LoginModel : PageModel
         // Bygger en profil af brugeren (liste med Claim-pbjekter), der kan gemmes i en cookie og som kan identificere brugeren
         List<Claim> claims = new List<Claim>();
         claims.Add(new Claim(ClaimTypes.Name, bruger.Navn));
-        //claims.Add(new Claim(ClaimTypes.Role, bruger.Rolle));  //TODO: Til senere implementering ift. Rolle
+        claims.Add(new Claim(ClaimTypes.Role, bruger.Rolle.Brugertype));  //TODO: VI FÅR EXCEPTION HER
 
         // Opretter en identitet, der skal bruges med cookie-autentificering.
         ClaimsIdentity claimsIdentity = new ClaimsIdentity(
