@@ -14,6 +14,9 @@ public partial class Rolle
     [Key]
     public int Id { get; set; }
 
+    [StringLength(50)]
+    public string Brugertype { get; set; }
+
     [InverseProperty("Rolle")]
     public virtual ICollection<Bruger> Brugers { get; set; } = new List<Bruger>();
 }

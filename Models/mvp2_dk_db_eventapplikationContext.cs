@@ -39,7 +39,7 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
-        => optionsBuilder.UseSqlServer("Data Source=mssql15.unoeuro.com;Initial Catalog=mvp2_dk_db_eventapplikation;Persist Security Info=True;User ID=mvp2_dk;Password=tkxf4wy25DdgFz6aRHbe");
+        => optionsBuilder.UseSqlServer("Data Source=mssql15.unoeuro.com;Initial Catalog=mvp2_dk_db_eventapplikation;Persist Security Info=True;User ID=mvp2_dk;Password=tkxf4wy25DdgFz6aRHbe;Encrypt=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -49,13 +49,9 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 
-            entity.HasOne(d => d.Campus).WithMany(p => p.Brugers)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Bruger__CampusId__534D60F1");
+            entity.HasOne(d => d.Campus).WithMany(p => p.Brugers).HasConstraintName("FK__Bruger__CampusId__68487DD7");
 
-            entity.HasOne(d => d.Rolle).WithMany(p => p.Brugers)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Bruger__RolleId__5441852A");
+            entity.HasOne(d => d.Rolle).WithMany(p => p.Brugers).HasConstraintName("FK__Bruger__RolleId__693CA210");
 
             entity.HasMany(d => d.Events).WithMany(p => p.Brugers)
                 .UsingEntity<Dictionary<string, object>>(

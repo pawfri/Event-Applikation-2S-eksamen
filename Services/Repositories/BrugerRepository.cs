@@ -11,7 +11,7 @@ public class BrugerRepository : IBrugerRepository
 {
     public List<string> Roller
     {
-        get { return new List<string> { "admin", "medlem", "Studerende" }; }
+        get { return new List<string> { "Admin", "Medlem", "Studerende" }; }
     }
 
     private readonly mvp2_dk_db_eventapplikationContext _context;
@@ -56,11 +56,13 @@ public class BrugerRepository : IBrugerRepository
     }
 
     /// <summary>
-    /// Laver en query (forespørgsl) på databasen, for at hente alle brugere fra databasen.
+    /// Laver en forespørgsel på databasen, for at hente alle brugere 
+    /// og deres rolle fra databasen.
     /// </summary>
     protected virtual IQueryable<Bruger> GetAllWithIncludes(DbContext context)
 	{
-		return context.Set<Bruger>();
-	}
+		return context.Set<Bruger>()
+        .Include(b => b.Rolle);
+    }
 
 }
