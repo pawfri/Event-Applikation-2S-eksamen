@@ -41,7 +41,7 @@
                             }
                         }
                     </ul>
-                    <ul class="navbar-nav d-flex align-items-center">
+                    <ul class="navbar-nav">
                         @{
                             // Hvis ingen er logget ind → vis "Log ind"
                             if (LoginModel.CurrentUser == null)
@@ -50,12 +50,12 @@
                                     <a class="btn btn-primary" asp-area="" asp-page="/BrugerLogin/Login">Log ind</a>
                                 </li>
                             }
-                            // ..Ellers, hvis en bruger er logget ind → vis navn og rolle og "Log ud"
+                            // ..Ellers, hvis en bruger er logget ind → vis rolle, navn og "Log ud"
                             else
                             {
                                 <li class="nav-item nav-link text-dark me-3">
-                                    <span>Bruger:</span> <span><b>@LoginModel.CurrentUser.Navn</b></span><br>
-                                    <span>Rolle:</span> <span><b>@LoginModel.CurrentUser.Rolle.Brugertype</b></span>
+                                    <span>@LoginModel.CurrentUser.Rolle.Brugertype:</span>
+                                    <span><b>@LoginModel.CurrentUser.Navn</b></span>
                                 </li>
                                 <li class="nav-item">
                                     <a class="btn btn-primary" asp-area="" asp-page="/BrugerLogin/Logout">Log ud</a>
