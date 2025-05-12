@@ -1,10 +1,11 @@
 ﻿namespace Event_Applikation.Services.Interfaces;
 using Event_Applikation.Models;
+using Event_Applikation.Models.BaseClasses;
 
 /// <summary>
 /// Interface for et Repository der rummer Event-objekter
 /// </summary>
 public interface IEventRepository
 {
-    void Create(Event @event);
+	int Create(Event @event);
 }
