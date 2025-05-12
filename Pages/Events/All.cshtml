@@ -1,6 +1,93 @@
 ﻿@page
-@model Event_Applikation.Pages.Events.allModel
+@model Event_Applikation.Pages.Events.AllModel
 @{
 }
 
 <h1>Oversigt over alle Events</h1>
+
+@* <div class="container">
+    <div class="row">
+        @foreach (var elem in Model.Data)
+        {
+            <div class="col-md-4 p-3">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title">@elem.Titel</h3>
+                        <h5>@(elem.Beskrivelse)</h5>
+                        <h5>@(elem.Dato) </h5>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+ *@
+@* <div class="container"
+    <div class="row"
+        @foreach (var elem in Model.Data)
+        {
+            
+            <h5>@(elem.Titel)</h5>
+            <h5>@(elem.Dato)</h5>
+        }
+    </div>
+</div> *@
+
+<table class="table table-bordered table-hover table-striped">
+	<thead>
+		<tr>
+			<th>
+				Titel
+			</th>
+			<th>
+				Kategori
+			</th>
+			<th>
+				Lokation
+			</th>
+			<th>
+				Dato
+			</th>
+			<th>
+				Start tidspunkt
+			</th>
+			<th>
+				Slut tidspunkt
+			</th>
+			<th>
+				
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Data != null)
+		{
+			foreach (var Event in Model.Data)
+			{
+				<tr>
+					<td>
+						@Event.Titel
+					</td>
+					<td>
+						@Event.Kategori.Type
+					</td>
+					<td>
+						@Event.Lokation
+					</td>
+					<td>
+						@Event.Dato
+					</td>
+					<td>
+						@Event.Starttid.ToString("HH:mm")
+					</td>
+					<td>
+						@Event.Sluttid.ToString("HH:mm")
+					</td>
+					<td>
+						<a class="btn btn-primary btn-sm" type="button" title="Details" asp-page="Details" asp-route-caseId="@Event.Id">Se Mere</a>
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>

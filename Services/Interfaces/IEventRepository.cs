@@ -8,4 +8,5 @@ using Event_Applikation.Models.BaseClasses;
 public interface IEventRepository
 {
 	int Create(Event @event);
+	List<Event> All { get; }
 }
