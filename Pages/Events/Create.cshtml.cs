@@ -42,8 +42,9 @@ public class CreateModel : PageModel
     public IActionResult OnPostSubmit()
 	{
 		//Kontrol af gyldig data
-		if (!ModelState.IsValid || NewEvent == null)
+		if (!ModelState.IsValid || NewEvent == null || !ErDatoOgTidGyldig(NewEvent))
 		{
+			OnGet();
 			return Page();
 		}
 
@@ -59,5 +60,13 @@ public class CreateModel : PageModel
 	{
 		KategoriList = new SelectList(_context.Kategoris, "Id", "Type");
 	}
+
+    /// <summary>
+    /// Metode, der kontroller om dato og tid er overskredet.
+    /// </summary>
+    public bool ErDatoOgTidGyldig(Event @event)
+    {
+		return @event.Dato >= DateOnly.FromDateTime(DateTime.Now) && @event.Starttid >= DateTime.Now;
+    }
 
 }
