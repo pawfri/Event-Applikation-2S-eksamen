@@ -17,8 +17,6 @@ public class EventRepository : IEventRepository
         _context = context;
     }
 
-    public IEnumerable<object> All { get; private set; }
-
     /// <summary>
     /// CRUD operation: Håndtering af oprettelse 
     /// af nyt Event og gemmer det i databasen.
@@ -30,6 +28,23 @@ public class EventRepository : IEventRepository
         _context.SaveChanges();
 
         return @event.Id;
+    }
+
+    /// <summary>
+    /// Bruges pt. ikke, da vi ikke har en OnPost() som skal hente data
+    /// men blot en OnGet(), hvorved vi blot kan bruge en liste til at hente data.
+    /// </summary>
+    //public Event? Read(int id)
+    //{
+    //    return GetAllWithIncludes(_context).FirstOrDefault(e => e.Id == id);
+    //}
+     
+    public List<Event> All => GetAllWithIncludes(_context).ToList();
+
+    protected virtual IQueryable<Event> GetAllWithIncludes(DbContext context)
+    {
+        return context.Set<Event>()
+                      .Include(e => e.Kategori);
     }
 
     /// <summary>
