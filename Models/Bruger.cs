@@ -20,10 +20,6 @@ public partial class Bruger
 
     [Required]
     [StringLength(45)]
-    public string Brugernavn { get; set; }
-
-    [Required]
-    [StringLength(45)]
     public string Adgangskode { get; set; }
 
     [Required]
@@ -32,7 +28,7 @@ public partial class Bruger
 
     public int? CampusId { get; set; }
 
-    public int RolleId { get; set; }
+    public int? RolleId { get; set; }
 
     [ForeignKey("CampusId")]
     [InverseProperty("Brugers")]

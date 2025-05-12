@@ -16,7 +16,7 @@ public class LoginModel : PageModel
     public static Bruger? CurrentUser { get; set; }
 
     [BindProperty]
-    public string Brugernavn { get; set; }
+    public string Email { get; set; }
 
     [BindProperty, DataType(DataType.Password)]
     public string Adgangskode { get; set; }
@@ -34,7 +34,7 @@ public class LoginModel : PageModel
     /// </summary>
     public async Task<IActionResult> OnPost()
     {
-        CurrentUser = _brugerRepository.VerifyUser(Brugernavn, Adgangskode);
+        CurrentUser = _brugerRepository.VerifyUser(Email, Adgangskode);
 
         if (CurrentUser == null)
         {

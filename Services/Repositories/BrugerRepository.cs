@@ -36,9 +36,9 @@ public class BrugerRepository : IBrugerRepository
     /// Håndterer verificering af at bruger oplysninger er korrekte 
     /// og returnere brugeren såfremt input matcher, ellers null.
     /// </summary>
-    public Bruger? VerifyUser(string providedUserName, string providedPassword)
+    public Bruger? VerifyUser(string providedEmail, string providedPassword)
     {
-        Bruger? bruger = All.FirstOrDefault(b => b.Brugernavn == providedUserName);
+        Bruger? bruger = All.FirstOrDefault(b => b.Email == providedEmail);
 
         // Bruger findes ikke eller har angivet forkert adgangskode
         if (bruger == null || !VerifyPassword(bruger, providedPassword))
