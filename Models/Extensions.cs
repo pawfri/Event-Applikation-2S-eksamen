@@ -1,10 +1,12 @@
 ﻿//namespace Event_Applikation.Models;
 using Event_Applikation.Models.BaseClasses;
+using System.ComponentModel.DataAnnotations;
 
 namespace Event_Applikation.Models;
 
 public partial class Event : IHasId
 {
+
 	public override string ToString()
 	{
 		return $"[Event {Id}] {Titel} " +

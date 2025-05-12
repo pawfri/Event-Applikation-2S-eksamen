@@ -14,6 +14,9 @@ namespace Event_Applikation.Pages.Events;
 [Authorize(Roles = "Admin,Medlem")]
 public class CreateModel : PageModel
 {
+    //ModelState.AddModelError("Event.Titel", "Du skal angive en Titel");
+
+
 	private IEventRepository _eventRepo;
 	private readonly mvp2_dk_db_eventapplikationContext _context;
 
@@ -42,7 +45,7 @@ public class CreateModel : PageModel
     public IActionResult OnPostSubmit()
 	{
 		//Kontrol af gyldig data
-		if (!ModelState.IsValid || NewEvent == null || !ErDatoOgTidGyldig(NewEvent))
+		if (!ModelState.IsValid || NewEvent == null || (!ErDatoOgTidGyldig(NewEvent) && ErTidFør(NewEvent))) //TODO: ErTidFør virker pt. ikke!
 		{
 			OnGet();
 			return Page();
@@ -67,6 +70,14 @@ public class CreateModel : PageModel
     public bool ErDatoOgTidGyldig(Event @event)
     {
 		return @event.Dato >= DateOnly.FromDateTime(DateTime.Now) && @event.Starttid >= DateTime.Now;
+    }
+
+    /// <summary>
+    /// Metode, der kontroller om dato og tid er overskredet.
+    /// </summary>
+    public bool ErTidFør(Event @event) //TODO: Denne metode virker pt. ikke!
+    {
+        return @event.Sluttid > @event.Starttid;
     }
 
 }

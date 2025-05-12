@@ -11,26 +11,32 @@
         <div class="form-group">
             <label asp-for="NewEvent.Titel" class="control-label">Titel</label>
             <input asp-for="NewEvent.Titel" class="form-control" />
+            <span asp-validation-for="NewEvent.Titel" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="NewEvent.Beskrivelse" class="control-label">Beskrivelse</label>
             <textarea asp-for="NewEvent.Beskrivelse" class="form-control"></textarea>
+            <span asp-validation-for="NewEvent.Beskrivelse" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="NewEvent.Lokation" class="control-label">Lokation</label>
             <input asp-for="NewEvent.Lokation" class="form-control" />
+            <span asp-validation-for="NewEvent.Lokation" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="NewEvent.Dato" class="control-label">Dato</label>
             <input asp-for="NewEvent.Dato" type="date" class="form-control" />
+            <span asp-validation-for="NewEvent.Dato" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="NewEvent.Starttid" class="control-label">Start tidspunkt</label>
             <input asp-for="NewEvent.Starttid" type="time" class="form-control" />
+            <span asp-validation-for="NewEvent.Starttid" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="NewEvent.Sluttid" class="control-label">Slut tidspunkt</label>
             <input asp-for="NewEvent.Sluttid" type="time" class="form-control" />
+            <span asp-validation-for="NewEvent.Sluttid" class="text-danger"></span>
         </div>
         <div class="form-group">
             <input type="checkbox" asp-for="NewEvent.Antalsbegrænsning" />
