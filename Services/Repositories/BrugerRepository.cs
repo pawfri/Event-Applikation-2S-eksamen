@@ -1,7 +1,7 @@
 ﻿using Event_Applikation.Models;
 using Event_Applikation.Services.Interfaces;
-using Event_Applikation.Models.BaseClasses;
-using Event_Applikation.Services.Repositories;
+//using Event_Applikation.Models.BaseClasses;
+//using Event_Applikation.Services.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Event_Applikation.Services.Repositories;
@@ -38,7 +38,7 @@ public class BrugerRepository : IBrugerRepository
     /// </summary>
     public Bruger? VerifyUser(string providedUserName, string providedPassword)
     {
-        Bruger? bruger = All.FirstOrDefault(b => b.Navn == providedUserName);
+        Bruger? bruger = All.FirstOrDefault(b => b.Brugernavn == providedUserName);
 
         // Bruger findes ikke eller har angivet forkert adgangskode
         if (bruger == null || !VerifyPassword(bruger, providedPassword))

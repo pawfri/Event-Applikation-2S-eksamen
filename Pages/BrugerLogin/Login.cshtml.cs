@@ -16,7 +16,7 @@ public class LoginModel : PageModel
     public static Bruger? CurrentUser { get; set; }
 
     [BindProperty]
-    public string Navn { get; set; }
+    public string Brugernavn { get; set; }
 
     [BindProperty, DataType(DataType.Password)]
     public string Adgangskode { get; set; }
@@ -34,7 +34,7 @@ public class LoginModel : PageModel
     /// </summary>
     public async Task<IActionResult> OnPost()
     {
-        CurrentUser = _brugerRepository.VerifyUser(Navn, Adgangskode);
+        CurrentUser = _brugerRepository.VerifyUser(Brugernavn, Adgangskode);
 
         if (CurrentUser == null)
         {
@@ -59,7 +59,7 @@ public class LoginModel : PageModel
         // Bygger en profil af brugeren (liste med Claim-pbjekter), der kan gemmes i en cookie og som kan identificere brugeren
         List<Claim> claims = new List<Claim>();
         claims.Add(new Claim(ClaimTypes.Name, bruger.Navn));
-        claims.Add(new Claim(ClaimTypes.Role, bruger.Rolle.Brugertype));  //TODO: VI FÅR EXCEPTION HER
+        claims.Add(new Claim(ClaimTypes.Role, bruger.Rolle.Brugertype));
 
         // Opretter en identitet, der skal bruges med cookie-autentificering.
         ClaimsIdentity claimsIdentity = new ClaimsIdentity(
