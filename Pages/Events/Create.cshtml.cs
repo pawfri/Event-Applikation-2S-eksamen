@@ -32,7 +32,8 @@ public class CreateModel : PageModel
 	}
 
 	/// <summary>
-	/// Når Create-siden hentes kaldes metoden: "LoadKategorier", så de kategorierne kan benyttes på siden.
+	/// Når Create-siden hentes kaldes metoden: "LoadKategorier", 
+	/// så de kategorierne kan benyttes på siden.
 	/// </summary>
 	public void OnGet()
 	{
@@ -45,7 +46,7 @@ public class CreateModel : PageModel
     public IActionResult OnPostSubmit()
 	{
 		//Kontrol af gyldig data
-		if (!ModelState.IsValid || NewEvent == null || (!ErDatoOgTidGyldig(NewEvent) && ErTidFør(NewEvent))) //TODO: ErTidFør virker pt. ikke!
+		if (!ModelState.IsValid || NewEvent == null || !ErDatoOgTidGyldig(NewEvent))
 		{
 			OnGet();
 			return Page();
@@ -57,7 +58,8 @@ public class CreateModel : PageModel
 	}
 
     /// <summary>
-    /// Metode, der indlæser kategorier fra databasen, for at de kan anvendes i drop-down menu i applikationen.
+    /// Indlæser kategorier fra databasen, for at de kan anvendes
+	/// i drop-down menu i applikationen. Kaldes i OnGet.
     /// </summary>
     public void LoadKategorier()
 	{
@@ -65,19 +67,13 @@ public class CreateModel : PageModel
 	}
 
     /// <summary>
-    /// Metode, der kontroller om dato og tid er overskredet.
+    /// Kontroller om dato og tid er overskredet og at sluttid
+	/// er senere end starttid. Kaldes i OnPostSubmit.
     /// </summary>
     public bool ErDatoOgTidGyldig(Event @event)
     {
-		return @event.Dato >= DateOnly.FromDateTime(DateTime.Now) && @event.Starttid >= DateTime.Now;
+		return @event.Dato >= DateOnly.FromDateTime(DateTime.Now) && 
+			   @event.Starttid >= DateTime.Now && 
+			   @event.Sluttid > @event.Starttid;
     }
-
-    /// <summary>
-    /// Metode, der kontroller om dato og tid er overskredet.
-    /// </summary>
-    public bool ErTidFør(Event @event) //TODO: Denne metode virker pt. ikke!
-    {
-        return @event.Sluttid > @event.Starttid;
-    }
-
 }
