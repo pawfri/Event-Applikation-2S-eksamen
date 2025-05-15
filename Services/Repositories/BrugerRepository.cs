@@ -65,4 +65,26 @@ public class BrugerRepository : IBrugerRepository
         .Include(b => b.Rolle);
     }
 
+    /// <summary>
+    /// CRUD operation: Håndtering af oprettelse 
+    /// af ny bruger og gemmer det i databasen.
+    /// </summary>
+    public int Create(Bruger bruger)
+	{
+		bruger.Id = NextId();
+		_context.Brugers.Add(bruger);
+		_context.SaveChanges();
+
+		return bruger.Id;
+	}
+
+    /// <summary>
+    /// Hjælpemetode til Create-metoden, der finder 
+    /// næste tilgængelige Id.
+    /// </summary>
+    private int NextId()
+	{
+		return _context.Brugers.Select(b => b.Id).ToList().DefaultIfEmpty(0).Max() + 1;
+	}
+
 }
