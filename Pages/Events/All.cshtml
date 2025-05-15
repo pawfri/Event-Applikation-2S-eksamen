@@ -1,37 +1,11 @@
 ﻿@page
+@using Event_Applikation.Pages.BrugerLogin
 @model Event_Applikation.Pages.Events.AllModel
 @{
 }
 
 <h1>Oversigt over alle Events</h1>
 
-@* <div class="container">
-    <div class="row">
-        @foreach (var elem in Model.Data)
-        {
-            <div class="col-md-4 p-3">
-                <div class="card shadow" style="width: 18rem;">
-                    <div class="card-body d-flex flex-column">
-                        <h3 class="card-title">@elem.Titel</h3>
-                        <h5>@(elem.Beskrivelse)</h5>
-                        <h5>@(elem.Dato) </h5>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</div>
- *@
-@* <div class="container"
-    <div class="row"
-        @foreach (var elem in Model.Data)
-        {
-            
-            <h5>@(elem.Titel)</h5>
-            <h5>@(elem.Dato)</h5>
-        }
-    </div>
-</div> *@
 
 <table class="table table-bordered table-hover table-striped">
 	<thead>
@@ -85,10 +59,17 @@
 					</td>
 					<td>
 						<a class="btn btn-primary btn-sm" title="Details" asp-page="Details" asp-route-caseId="@Event.Id">Se Mere</a>
-
+						@{
+							// Kontroller om man må kunne se knappen til at "Slette Event".
+							if (LoginModel.CurrentUser != null &&
+							(LoginModel.CurrentUser.Rolle.Brugertype == "Admin" ||
+							LoginModel.CurrentUser.Rolle.Brugertype == "Medlem"))
+							{
 						<form method="post" asp-page-handler="Delete" asp-route-caseId="@Event.Id" style="display:inline;">
 							<button type="submit" class="btn btn-danger btn-sm" title="Slet">Slet</button>
 						</form>
+							}
+						}
 					</td>
 				</tr>
 			}
