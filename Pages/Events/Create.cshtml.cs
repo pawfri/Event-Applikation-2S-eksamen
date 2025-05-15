@@ -14,10 +14,7 @@ namespace Event_Applikation.Pages.Events;
 [Authorize(Roles = "Admin,Medlem")]
 public class CreateModel : PageModel
 {
-    //ModelState.AddModelError("Event.Titel", "Du skal angive en Titel");
-
-
-	private IEventRepository _eventRepo;
+    private IEventRepository _eventRepo;
 	private readonly mvp2_dk_db_eventapplikationContext _context;
 
 	[BindProperty]

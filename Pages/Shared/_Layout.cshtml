@@ -40,6 +40,16 @@
                                 </li>
                             }
                         }
+                        @{
+                            // Kontroller om man må se linket til "Opret Event"-siden i navigationsbaren
+                            if (LoginModel.CurrentUser != null &&
+                            (LoginModel.CurrentUser.Rolle.Brugertype == "Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Brugere/Admin/Create">Opret Frivillig</a>
+                                </li>
+                            }
+                        }
                     </ul>
                     <ul class="navbar-nav">
                         @{

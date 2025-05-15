@@ -11,6 +11,7 @@ public interface IBrugerRepository
     /// </summary>
     List<Bruger> All { get; }
 
+    int Create(Bruger bruger);
     Bruger? VerifyUser(string providedUserName, string providedPassword);
     List<string> Roller { get; }
 }
