@@ -4,6 +4,9 @@ using Event_Applikation.Services.Interfaces;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore;
 using Event_Applikation.Models.BaseClasses;
+using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Event_Applikation.Services.Repositories;
 
@@ -54,6 +57,23 @@ public class EventRepository : IEventRepository
     private int NextId()
     {
         return _context.Events.Select(e => e.Id).ToList().DefaultIfEmpty(0).Max() + 1;
+	}
+
+    /// <summary>
+    /// Finder event med det pågældende id i databasen.
+    /// Sletter det hvis det findes og returnerer true, 
+    /// ellers returnerer false.
+    /// </summary>
+    public bool DeleteEvent(int caseId)
+    {
+        Event? @event = _context.Events.Find(caseId);
+        
+        if (@event != null)
+        {
+            _context.Events.Remove(@event);
+            _context.SaveChanges();
+            return true;
+        }
+        return false;
     }
 }
-
