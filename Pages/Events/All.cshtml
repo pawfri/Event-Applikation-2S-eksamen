@@ -84,7 +84,11 @@
 						@Event.Sluttid.ToString("HH:mm")
 					</td>
 					<td>
-						<a class="btn btn-primary btn-sm" type="button" title="Details" asp-page="Details" asp-route-caseId="@Event.Id">Se Mere</a>
+						<a class="btn btn-primary btn-sm" title="Details" asp-page="Details" asp-route-caseId="@Event.Id">Se Mere</a>
+
+						<form method="post" asp-page-handler="Delete" asp-route-caseId="@Event.Id" style="display:inline;">
+							<button type="submit" class="btn btn-danger btn-sm" title="Slet">Slet</button>
+						</form>
 					</td>
 				</tr>
 			}
