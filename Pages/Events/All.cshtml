@@ -4,8 +4,8 @@
 @{
 }
 
-<h1>Oversigt over alle Events</h1>
-
+<h1>Oversigt over alle Events</h1> 
+<a class="btn btn-primary btn-sm mb-3" title="Kalender" asp-page="Kalender">Se som kalender</a>
 
 <table class="table table-bordered table-hover table-striped">
 	<thead>
@@ -40,7 +40,8 @@
 			{
 				<tr>
 					<td>
-						@Event.Titel
+						<a asp-page="Details" asp-route-caseId="@Event.Id" class="text-primary"><b>@Event.Titel</b></a>
+						@* @Event.Titel *@
 					</td>
 					<td>
 						@Event.Kategori.Type
