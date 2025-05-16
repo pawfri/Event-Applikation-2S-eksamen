@@ -22,8 +22,17 @@ body {
 }
 
 header {
-    color: #FFF07C
+    color: #ff5733
 }
+
+nav.navbar {
+    background-color: #FFF07C !important;
+    color: white;
+}
+
+
+
+
 
 /* Styles for the EventCreate Razor Page */
 .event-create-page .content {
