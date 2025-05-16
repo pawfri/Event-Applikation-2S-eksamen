@@ -39,7 +39,7 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
-        => optionsBuilder.UseSqlServer("Data Source=mssql15.unoeuro.com;Initial Catalog=mvp2_dk_db_eventapplikation;Persist Security Info=True;User ID=mvp2_dk;Password=tkxf4wy25DdgFz6aRHbe");
+        => optionsBuilder.UseSqlServer("Data Source=mssql15.unoeuro.com;Initial Catalog=mvp2_dk_db_eventapplikation;Persist Security Info=True;User ID=mvp2_dk;Password=tkxf4wy25DdgFz6aRHbe;Encrypt=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
