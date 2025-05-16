@@ -46,7 +46,6 @@
 				<tr>
 					<td>
 						<a asp-page="Details" asp-route-caseId="@Event.Id" class="text-primary"><b>@Event.Titel</b></a>
-						@* @Event.Titel *@
 					</td>
 					<td>
 						@Event.Kategori.Type
@@ -63,8 +62,6 @@
 					<td>
 						@Event.Sluttid.ToString("HH:mm")
 					</td>
-					@* <td> *@
-						@* <a class="btn btn-primary btn-sm" title="Details" asp-page="Details" asp-route-caseId="@Event.Id">Se Mere</a> *@
 						@{
 							// Kontroller om man må kunne se knappen til at "Slette Event".
 							if (LoginModel.CurrentUser != null &&
@@ -78,7 +75,6 @@
 						</td>
 							}
 						}
-					@* </td> *@
 				</tr>
 			}
 		}
