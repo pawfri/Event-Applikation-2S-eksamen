@@ -20,14 +20,11 @@ public partial class Event
 
     public DateOnly Dato { get; set; }
 
-    [Column(TypeName = "datetime")]
-    public DateTime Starttid { get; set; }
+    public TimeOnly Starttid { get; set; }
 
-    [Column(TypeName = "datetime")]
-    public DateTime Sluttid { get; set; }
+    public TimeOnly Sluttid { get; set; }
 
     [Required]
-    [StringLength(45)]
     public string Beskrivelse { get; set; }
 
     public bool Antalsbegrænsning { get; set; }

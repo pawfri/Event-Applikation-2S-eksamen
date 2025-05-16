@@ -21,7 +21,7 @@ public partial class Event : IHasId
 	/// Alternativet til en klassisk constructor til Events:
 	/// </summary>
 
-	public static Event Create(string titel, DateTime Starttid, DateTime Sluttid, string beskrivelse, bool Antalsbegrænsning, string lokation)
+	public static Event Create(string titel, TimeOnly Starttid, TimeOnly Sluttid, string beskrivelse, bool Antalsbegrænsning, string lokation)
 	{
 		return new Event { Titel = titel, Starttid = Starttid, Sluttid = Sluttid, Beskrivelse = beskrivelse, Lokation = lokation };
 	}
