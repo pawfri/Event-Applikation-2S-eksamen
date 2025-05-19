@@ -1,12 +1,6 @@
-﻿using Event_Applikation.Services.BaseClasses;
-using Event_Applikation.Models;
+﻿using Event_Applikation.Models;
 using Event_Applikation.Services.Interfaces;
-using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore;
-using Event_Applikation.Models.BaseClasses;
-using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Event_Applikation.Services.Repositories;
 

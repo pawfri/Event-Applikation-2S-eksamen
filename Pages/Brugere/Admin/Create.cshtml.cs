@@ -3,7 +3,6 @@ using Event_Applikation.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace Event_Applikation.Pages.Brugere.Admin
 {
