@@ -16,7 +16,7 @@ public class CreateModel : PageModel
     private readonly mvp2_dk_db_eventapplikationContext _context;
 
     [BindProperty]
-    public Event NewEvent { get; set; }
+    public Event NytEvent { get; set; }
 
     public SelectList KategoriList { get; set; }
 
@@ -41,14 +41,14 @@ public class CreateModel : PageModel
     public IActionResult OnPostSubmit()
     {
         //Kontrol af gyldig data
-        if (!ModelState.IsValid || NewEvent == null || !ErDatoOgTidGyldig(NewEvent))
+        if (!ModelState.IsValid || NytEvent == null || !ErDatoOgTidGyldig(NytEvent))
         {
             OnGet();
             return Page();
         }
 
         //Opretter et nyt event og omdirigerer til All-Event siden
-        _eventRepo.Create(NewEvent);
+        _eventRepo.Create(NytEvent);
         return RedirectToPage("All");
     }
 
@@ -74,15 +74,4 @@ public class CreateModel : PageModel
         return startdatetime >= DateTime.Now && slutdatetime > startdatetime;
     }
 
-    // TODO: gemmes som reference, da vi har lavet en ny, men stadig vil eksperimentere med denne
-    /// <summary>
-    /// Kontroller om dato og tid er overskredet og at sluttid
-    /// er senere end starttid. Kaldes i OnPostSubmit.
-    /// </summary>
-    //public bool ErDatoOgTidGyldig(Event @event)
-    //{
-    //    return @event.Dato.ToDateTime >= DateOnly.FromDateTime(DateTime.Now) &&
-    //           @event.Starttid >= DateTime.Now &&
-    //           @event.Sluttid > @event.Starttid;
-    //}
 }

@@ -9,8 +9,6 @@ public class KalenderModel : PageModel
 {
     private readonly IEventRepository _eventrepo;
 
-    [BindProperty]
-    public Event Event { get; set; }
     public List<Event> Data { get; private set; }
     public DateTime DagsDato { get; set; }
     public DateTime AktuelMåned { get; set; }

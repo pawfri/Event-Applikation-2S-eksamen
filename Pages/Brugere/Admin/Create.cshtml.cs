@@ -12,7 +12,7 @@ namespace Event_Applikation.Pages.Brugere.Admin
 		private readonly mvp2_dk_db_eventapplikationContext _context;
 
 		[BindProperty]
-		public Bruger NewBruger { get; set; }
+		public Bruger NyBruger { get; set; }
 
         public SelectList RolleList { get; set; }
 
@@ -39,14 +39,14 @@ namespace Event_Applikation.Pages.Brugere.Admin
         public IActionResult OnPostSubmit()
 		{
 			//Kontrol af gyldig data
-			if (!ModelState.IsValid || NewBruger == null)
+			if (!ModelState.IsValid || NyBruger == null)
 			{
 				OnGet();
 				return Page();
 			}
 
 			//Opretter en ny bruger og omdirigerer til Forsiden
-			_brugerRepo.Create(NewBruger);
+			_brugerRepo.Create(NyBruger);
 			return RedirectToPage("/Index");
         }
 

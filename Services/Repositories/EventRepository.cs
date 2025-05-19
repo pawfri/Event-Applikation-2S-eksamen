@@ -6,7 +6,7 @@ namespace Event_Applikation.Services.Repositories;
 
 public class EventRepository : IEventRepository
 {
-	
+
 	private readonly mvp2_dk_db_eventapplikationContext _context;
 
     public EventRepository(mvp2_dk_db_eventapplikationContext context)
@@ -31,11 +31,12 @@ public class EventRepository : IEventRepository
     /// Bruges pt. ikke, da vi ikke har en OnPost() som skal hente data
     /// men blot en OnGet(), hvorved vi blot kan bruge en liste til at hente data.
     /// </summary>
-    //public Event? Read(int id)
-    //{
-    //    return GetAllWithIncludes(_context).FirstOrDefault(e => e.Id == id);
-    //}
-     
+    public Event? Read(int id)
+    {
+        return GetAllWithIncludes(_context).FirstOrDefault(e => e.Id == id);
+    }
+
+
     public List<Event> All => GetAllWithIncludes(_context).ToList();
 
     protected virtual IQueryable<Event> GetAllWithIncludes(DbContext context)
@@ -45,10 +46,10 @@ public class EventRepository : IEventRepository
     }
 
     /// <summary>
-    /// Hjælpemetode til Create-metoden, der finder 
-    /// næste tilgængelige Id.
-    /// </summary>
-    private int NextId()
+	/// Hjælpemetode til Create-metoden, der finder 
+	/// næste tilgængelige Id.
+	/// </summary>
+	private int NextId()
     {
         return _context.Events.Select(e => e.Id).ToList().DefaultIfEmpty(0).Max() + 1;
 	}

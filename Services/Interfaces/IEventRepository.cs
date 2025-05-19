@@ -10,4 +10,5 @@ public interface IEventRepository
 	int Create(Event @event);
 	List<Event> All { get; }
     bool DeleteEvent(int caseId);
+	Event? Read(int id);
 }

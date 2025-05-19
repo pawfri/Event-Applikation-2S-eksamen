@@ -9,14 +9,12 @@ public class AllModel : PageModel
 {
 	private readonly IEventRepository _eventrepo;
 
-    [BindProperty]
-    public Event ExistingEvent { get; set; }
-
-    public List<Event> Data { get; private set; }
+	public List<Event> Data { get; private set; }
 
 	public AllModel(IEventRepository eventrepo)
 	{
 		_eventrepo = eventrepo;
+		Data = new List<Event>();
 	}
 
 	public void OnGet()
