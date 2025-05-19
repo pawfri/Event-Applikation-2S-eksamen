@@ -1,0 +1,21 @@
+﻿@page
+@model Event_Applikation.Pages.Events.DetaljerModel
+@{
+}
+
+@if (Model.Event != null)
+{
+    <div>
+        <h1>@Model.Event.Titel</h1>
+        <p><b>Beskrivelse:</b> @Model.Event.Beskrivelse</p>
+        <p><b>Dato:</b> @Model.Event.Dato.ToString("dd-MM-yyyy")</p>
+        <p><b>Tidspunkt: kl.</b> @Model.Event.Starttid - @Model.Event.Sluttid</p>
+        <p><b>Lokation:</b> @Model.Event.Lokation</p>
+
+        <a class="btn btn-primary btn-sm mb-3" onclick="history.back()">Gå Tilbage</a>
+    </div>
+}
+else
+{
+    <p>Event blev ikke fundet.</p>
+}

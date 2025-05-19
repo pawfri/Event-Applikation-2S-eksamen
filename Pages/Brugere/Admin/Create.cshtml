@@ -8,33 +8,33 @@
 <body>
     <form method="post">
         <div class="form-group">
-            <label asp-for="NewBruger.Navn" class="control-label">Navn</label>
-            <input asp-for="NewBruger.Navn" class="form-control" />
-            <span asp-validation-for="NewBruger.Navn" class="text-danger"></span>
+            <label asp-for="NyBruger.Navn" class="control-label">Navn</label>
+            <input asp-for="NyBruger.Navn" class="form-control" />
+            <span asp-validation-for="NyBruger.Navn" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="NewBruger.Email" class="control-label">Email</label>
-            <textarea asp-for="NewBruger.Email" class="form-control"></textarea>
-            <span asp-validation-for="NewBruger.Email" class="text-danger"></span>
+            <label asp-for="NyBruger.Email" class="control-label">Email</label>
+            <textarea asp-for="NyBruger.Email" class="form-control"></textarea>
+            <span asp-validation-for="NyBruger.Email" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="NewBruger.Adgangskode" class="control-label">Adgangskode</label>
-            <input asp-for="NewBruger.Adgangskode" class="form-control" />
-            <span asp-validation-for="NewBruger.Adgangskode" class="text-danger"></span>
+            <label asp-for="NyBruger.Adgangskode" class="control-label">Adgangskode</label>
+            <input asp-for="NyBruger.Adgangskode" class="form-control" />
+            <span asp-validation-for="NyBruger.Adgangskode" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="NewBruger.RolleId" class="control-label">Rolle</label>
-            <select asp-for="NewBruger.RolleId" asp-items="Model.RolleList" class="form-control">
+            <label asp-for="NyBruger.RolleId" class="control-label">Rolle</label>
+            <select asp-for="NyBruger.RolleId" asp-items="Model.RolleList" class="form-control">
                 <option value="">-- Vælg et Rolle --</option>
             </select>
-            <span asp-validation-for="NewBruger.RolleId" class="text-danger"></span>
+            <span asp-validation-for="NyBruger.RolleId" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="NewBruger.CampusId" class="control-label">Campus</label>
-            <select asp-for="NewBruger.CampusId" asp-items="Model.CampusList" class="form-control">
+            <label asp-for="NyBruger.CampusId" class="control-label">Campus</label>
+            <select asp-for="NyBruger.CampusId" asp-items="Model.CampusList" class="form-control">
                 <option value="">-- Vælg et Campus --</option>
             </select>
-            <span asp-validation-for="NewBruger.CampusId" class="text-danger"></span>
+            <span asp-validation-for="NyBruger.CampusId" class="text-danger"></span>
         </div>
         <p>
             <div class="form-group">

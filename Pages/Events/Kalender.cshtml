@@ -20,7 +20,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="card-date"> @elem.Dato.ToString("dd. MMMM yyyy")</div>
-                            <div class="card-title">@elem.Titel</div>
+                            <div class="card-title"><a asp-page="Detaljer" asp-route-id="@elem.Id" class="text-primary"><b>@elem.Titel</b></a></div>
                             <div class="card-detail"><b>@elem.Kategori.Type</b></div>
                             <div class="card-detail"><b>Tid:</b> kl. @elem.Starttid.ToString("HH:mm") - @elem.Sluttid.ToString("HH:mm")</div>
                             <div class="card-detail"><b>Sted:</b> @elem.Lokation</div>

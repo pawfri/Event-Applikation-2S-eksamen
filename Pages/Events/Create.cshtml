@@ -9,49 +9,49 @@
 <body>
     <form method="post">
         <div class="form-group">
-            <label asp-for="NewEvent.Titel" class="control-label">Titel</label>
-            <input asp-for="NewEvent.Titel" class="form-control" />
-            <span asp-validation-for="NewEvent.Titel" class="text-danger"></span>
+            <label asp-for="NytEvent.Titel" class="control-label">Titel</label>
+            <input asp-for="NytEvent.Titel" class="form-control" />
+            <span asp-validation-for="NytEvent.Titel" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="NewEvent.Beskrivelse" class="control-label">Beskrivelse</label>
-            <textarea asp-for="NewEvent.Beskrivelse" class="form-control"></textarea>
-            <span asp-validation-for="NewEvent.Beskrivelse" class="text-danger"></span>
+            <label asp-for="NytEvent.Beskrivelse" class="control-label">Beskrivelse</label>
+            <textarea asp-for="NytEvent.Beskrivelse" class="form-control"></textarea>
+            <span asp-validation-for="NytEvent.Beskrivelse" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="NewEvent.Lokation" class="control-label">Lokation</label>
-            <input asp-for="NewEvent.Lokation" class="form-control" />
-            <span asp-validation-for="NewEvent.Lokation" class="text-danger"></span>
+            <label asp-for="NytEvent.Lokation" class="control-label">Lokation</label>
+            <input asp-for="NytEvent.Lokation" class="form-control" />
+            <span asp-validation-for="NytEvent.Lokation" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="NewEvent.Dato" class="control-label">Dato</label>
-            <input asp-for="NewEvent.Dato" type="date" class="form-control" />
-            <span asp-validation-for="NewEvent.Dato" class="text-danger"></span>
+            <label asp-for="NytEvent.Dato" class="control-label">Dato</label>
+            <input asp-for="NytEvent.Dato" type="date" class="form-control" />
+            <span asp-validation-for="NytEvent.Dato" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="NewEvent.Starttid" class="control-label">Start tidspunkt</label>
-            <input asp-for="NewEvent.Starttid" type="time" class="form-control" />
-            <span asp-validation-for="NewEvent.Starttid" class="text-danger"></span>
+            <label asp-for="NytEvent.Starttid" class="control-label">Start tidspunkt</label>
+            <input asp-for="NytEvent.Starttid" type="time" class="form-control" />
+            <span asp-validation-for="NytEvent.Starttid" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="NewEvent.Sluttid" class="control-label">Slut tidspunkt</label>
-            <input asp-for="NewEvent.Sluttid" type="time" class="form-control" />
-            <span asp-validation-for="NewEvent.Sluttid" class="text-danger"></span>
+            <label asp-for="NytEvent.Sluttid" class="control-label">Slut tidspunkt</label>
+            <input asp-for="NytEvent.Sluttid" type="time" class="form-control" />
+            <span asp-validation-for="NytEvent.Sluttid" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="checkbox" asp-for="NewEvent.Antalsbegrænsning" />
-            <label asp-for="NewEvent.Antalsbegrænsning" class="control-label">Antalsbegrænsning</label>
+            <input type="checkbox" asp-for="NytEvent.Antalsbegrænsning" />
+            <label asp-for="NytEvent.Antalsbegrænsning" class="control-label">Antalsbegrænsning</label>
         </div>
         <div class="form-group">
-            <label asp-for="NewEvent.MaxDeltager" class="control-label">Max Antal Deltagere <em>(hvis Antalsbegrænsning)</em></label>
-            <input asp-for="NewEvent.MaxDeltager" class="form-control" />
+            <label asp-for="NytEvent.MaxDeltager" class="control-label">Max Antal Deltagere <em>(hvis Antalsbegrænsning)</em></label>
+            <input asp-for="NytEvent.MaxDeltager" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="NewEvent.KategoriId" class="control-label">Kategori</label>
-            <select asp-for="NewEvent.KategoriId" asp-items="Model.KategoriList" class="form-control">
+            <label asp-for="NytEvent.KategoriId" class="control-label">Kategori</label>
+            <select asp-for="NytEvent.KategoriId" asp-items="Model.KategoriList" class="form-control">
                 <option value="">-- Vælg en kategori --</option>
             </select>
-            <span asp-validation-for="NewEvent.KategoriId" class="text-danger"></span>
+            <span asp-validation-for="NytEvent.KategoriId" class="text-danger"></span>
         </div>
         <p>
         <div class="form-group">
