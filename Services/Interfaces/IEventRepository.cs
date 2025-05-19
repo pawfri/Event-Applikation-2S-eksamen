@@ -1,6 +1,6 @@
-﻿namespace Event_Applikation.Services.Interfaces;
-using Event_Applikation.Models;
-using Event_Applikation.Models.BaseClasses;
+﻿using Event_Applikation.Models;
+
+namespace Event_Applikation.Services.Interfaces;
 
 /// <summary>
 /// Interface for et Repository der rummer Event-objekter

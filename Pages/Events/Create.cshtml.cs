@@ -2,9 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Event_Applikation.Services.Interfaces;
 using Event_Applikation.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using Microsoft.AspNetCore.Authorization;
 
 

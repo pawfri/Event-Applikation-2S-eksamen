@@ -1,7 +1,5 @@
 ﻿using Event_Applikation.Models;
 using Event_Applikation.Services.Interfaces;
-//using Event_Applikation.Models.BaseClasses;
-//using Event_Applikation.Services.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Event_Applikation.Services.Repositories;

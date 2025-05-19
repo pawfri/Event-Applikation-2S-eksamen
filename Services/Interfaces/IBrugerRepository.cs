@@ -1,6 +1,4 @@
 ﻿using Event_Applikation.Models;
-using Event_Applikation.Models.BaseClasses;
-using Event_Applikation.Services.BaseClasses;
 
 namespace Event_Applikation.Services.Interfaces;
 
