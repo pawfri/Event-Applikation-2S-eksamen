@@ -14,13 +14,10 @@ public class LoginModel : PageModel
     private IBrugerRepository _brugerRepository;
 
     public static Bruger? CurrentUser { get; set; }
-
     [BindProperty]
     public string Email { get; set; }
-
     [BindProperty, DataType(DataType.Password)]
     public string Adgangskode { get; set; }
-
     public string FejlBesked { get; set; }
 
     public LoginModel(IBrugerRepository brugerRepository)

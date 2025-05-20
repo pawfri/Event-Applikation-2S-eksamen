@@ -8,7 +8,6 @@ public interface IBrugerRepository
     /// Returnerer alle objekter i repository.
     /// </summary>
     List<Bruger> All { get; }
-
     int Create(Bruger bruger);
     Bruger? VerifyUser(string providedUserName, string providedPassword);
     List<string> Roller { get; }

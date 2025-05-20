@@ -9,7 +9,6 @@ public class DetaljerModel : PageModel
 {
     private readonly IEventRepository _eventrepo;
 
-    //[BindProperty]
     public Event? Event { get; set; }
 
     public DetaljerModel(IEventRepository eventrepo)

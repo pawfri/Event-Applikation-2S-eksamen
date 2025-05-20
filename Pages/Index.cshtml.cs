@@ -1,7 +1,6 @@
 using Event_Applikation.Pages.BrugerLogin;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Event_Applikation.Pages
@@ -15,9 +14,10 @@ namespace Event_Applikation.Pages
             _logger = logger;
         }
 
+        ///Tvinger en signout når man starter programmet
         public void OnGet()
         {
-			if (LoginModel.CurrentUser == null) // Force Signout on startup
+			if (LoginModel.CurrentUser == null)
 			{
 				HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 			}

@@ -23,9 +23,9 @@ public class AllModel : PageModel
 	}
 
 	/// <summary>
-	/// OnPostDelete kalder vores "DeleteEvent" metode fra EventRepository
+	/// OnPostDelete() kalder vores "DeleteEvent" metode fra EventRepository
 	/// på et event og sletter eventet fra Databasen.
-	/// Bruger omdirgeres til Event oversigten
+	/// Bruger omdirigeres til Event oversigten.
 	/// </summary>
     public IActionResult OnPostDelete(int caseId)
     {
