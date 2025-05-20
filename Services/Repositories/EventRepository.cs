@@ -28,8 +28,8 @@ public class EventRepository : IEventRepository
     }
 
     /// <summary>
-    /// Bruges pt. ikke, da vi ikke har en OnPost() som skal hente data
-    /// men blot en OnGet(), hvorved vi blot kan bruge en liste til at hente data.
+    /// Bruges til OnGet() på Detaljer-siden, 
+    /// til at hente id for det valgte event.
     /// </summary>
     public Event? Read(int id)
     {

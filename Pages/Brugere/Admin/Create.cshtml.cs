@@ -13,9 +13,7 @@ namespace Event_Applikation.Pages.Brugere.Admin
 
 		[BindProperty]
 		public Bruger NyBruger { get; set; }
-
         public SelectList RolleList { get; set; }
-
         public SelectList CampusList { get; set; }
 
         public CreateModel(mvp2_dk_db_eventapplikationContext context, IBrugerRepository brugerrepo)

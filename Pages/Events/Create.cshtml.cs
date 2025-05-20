@@ -17,7 +17,6 @@ public class CreateModel : PageModel
 
     [BindProperty]
     public Event NytEvent { get; set; }
-
     public SelectList KategoriList { get; set; }
 
     public CreateModel(mvp2_dk_db_eventapplikationContext context, IEventRepository eventrepo)
@@ -36,25 +35,25 @@ public class CreateModel : PageModel
     }
 
     /// <summary>
-    /// Håndterer at kontrollere og indsende input, for at oprette et nyt event.
+    /// Håndterer oprettelse af nyt event.
     /// </summary>
     public IActionResult OnPostSubmit()
     {
-        //Kontrol af gyldig data
+        // Kontrol af gyldig data
         if (!ModelState.IsValid || NytEvent == null || !ErDatoOgTidGyldig(NytEvent))
         {
             OnGet();
             return Page();
         }
 
-        //Opretter et nyt event og omdirigerer til All-Event siden
+        // Opretter et nyt event og omdirigerer til All-Event siden
         _eventRepo.Create(NytEvent);
         return RedirectToPage("All");
     }
 
     /// <summary>
     /// Indlæser kategorier fra databasen, for at de kan anvendes
-	/// i drop-down menu i applikationen. Kaldes i OnGet.
+	/// i drop-down menu i applikationen. Kaldes i OnGet().
     /// </summary>
     public void LoadKategorier()
     {
@@ -63,7 +62,7 @@ public class CreateModel : PageModel
 
     /// <summary>
     /// Kontroller om dato og tid er overskredet og at sluttid
-    /// er senere end starttid. Kaldes i OnPostSubmit.
+    /// er senere end starttid. Kaldes i OnPostSubmit().
     /// </summary>
     public bool ErDatoOgTidGyldig(Event @event)
     {
