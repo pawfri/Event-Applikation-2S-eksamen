@@ -14,7 +14,7 @@
         <p><b>Tidspunkt: kl.</b> @Model.Event.Starttid - @Model.Event.Sluttid</p>
         <p><b>Lokation:</b> @Model.Event.Lokation</p>
 
-        <button type="submit" class="btn btn-primary btn-sm mb-3" onclick="history.back()">Gå Tilbage</button>
+        <button type="submit" class="btn btn-primary btn-sm" onclick="history.back()">Gå Tilbage</button>
 		@{
 			// Kontroller om man må kunne se knappen til at "Slette Event".
 			if (LoginModel.CurrentUser != null &&
