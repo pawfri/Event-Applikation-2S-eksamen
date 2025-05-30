@@ -28,14 +28,14 @@
 			<th>
 				Slut tidspunkt
 			</th>
-			@if (LoginModel.CurrentUser != null &&
+@* 			@if (LoginModel.CurrentUser != null &&
 			(LoginModel.CurrentUser.Rolle.Brugertype == "Admin" ||
 			LoginModel.CurrentUser.Rolle.Brugertype == "Medlem"))
 			{
 			<th>
 				Handlinger
 			</th>
-			}
+			}*@
 		</tr>
 	</thead>
 	<tbody>
@@ -62,7 +62,7 @@
 					<td>
 						@Event.Sluttid.ToString("HH:mm")
 					</td>
-						@{
+@* 						@{
 							// Kontroller om man må kunne se knappen til at "Slette Event".
 							if (LoginModel.CurrentUser != null &&
 							(LoginModel.CurrentUser.Rolle.Brugertype == "Admin" ||
@@ -74,7 +74,7 @@
 							</form>
 						</td>
 							}
-						}
+						} *@
 				</tr>
 			}
 		}
