@@ -14,7 +14,7 @@
         <p><b>Tidspunkt: kl.</b> @Model.Event.Starttid - @Model.Event.Sluttid</p>
         <p><b>Lokation:</b> @Model.Event.Lokation</p>
 
-        <a class="btn btn-primary btn-sm mb-3" onclick="history.back()">Gå Tilbage</a>
+        <button type="submit" class="btn btn-primary btn-sm mb-3" onclick="history.back()">Gå Tilbage</button>
 		@{
 			// Kontroller om man må kunne se knappen til at "Slette Event".
 			if (LoginModel.CurrentUser != null &&
@@ -22,7 +22,7 @@
 			LoginModel.CurrentUser.Rolle.Brugertype == "Medlem"))
 			{
 				
-				<form method="post" asp-page-handler="Delete" asp-route-id="@Model.Event.Id" @*style="display:inline;"*@>
+				<form method="post" asp-page-handler="Delete" asp-route-id="@Model.Event.Id" style="display:inline;">
 					<button type="submit" class="btn btn-danger btn-sm" title="Slet">Slet</button>
 				</form>
 				

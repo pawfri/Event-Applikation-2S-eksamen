@@ -15,6 +15,14 @@ namespace Event_Applikation.Pages.Brugere.Admin
 		public Bruger NyBruger { get; set; }
         public SelectList RolleList { get; set; }
         public SelectList CampusList { get; set; }
+        public string? Fejlbesked { get; set; }
+        public bool EmailEksisterer
+        {
+            get 
+            {
+                return _context.Brugers.Any(b => b.Email == NyBruger.Email);
+            }
+        }
 
         public CreateModel(mvp2_dk_db_eventapplikationContext context, IBrugerRepository brugerrepo)
 		{
@@ -36,16 +44,22 @@ namespace Event_Applikation.Pages.Brugere.Admin
         /// </summary>
         public IActionResult OnPostSubmit()
 		{
-			//Kontrol af gyldig data
-			if (!ModelState.IsValid || NyBruger == null)
+            // Kontrol af gyldig data
+            if (!ModelState.IsValid || NyBruger == null)
 			{
-				OnGet();
+                // Kontrol om Email allerede findes
+                if (EmailEksisterer == true)
+                {
+                    Fejlbesked = "Denne Email findes allerede i systemet";
+                }
+
+                OnGet();
 				return Page();
 			}
 
-			//Opretter en ny bruger og omdirigerer til Forsiden
-			_brugerRepo.Create(NyBruger);
-			return RedirectToPage("/Index");
+            // Opretter en ny bruger og omdirigerer til Forsiden
+            _brugerRepo.Create(NyBruger);
+            return RedirectToPage("/Index");
         }
 
         /// <summary>
