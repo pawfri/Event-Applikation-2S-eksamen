@@ -24,6 +24,16 @@ public class DetaljerModel : PageModel
 
         
     }
-
+	//Flyttet fra "All" siden
+	/// <summary>
+	/// OnPostDelete() kalder vores "DeleteEvent" metode fra EventRepository
+	/// på et event og sletter eventet fra Databasen.
+	/// Bruger omdirigeres til Event oversigten.
+	/// </summary>
+	public IActionResult OnPostDelete(int id)
+	{
+		_eventrepo.DeleteEvent(id);
+		return RedirectToPage("All");
+	}
 
 }
