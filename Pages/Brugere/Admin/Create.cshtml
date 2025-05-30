@@ -16,6 +16,10 @@
             <label asp-for="NyBruger.Email" class="control-label">Email</label>
             <input asp-for="NyBruger.Email" class="form-control" />
             <span asp-validation-for="NyBruger.Email" class="text-danger"></span>
+            @if(Model.Fejlbesked != null)
+            {
+                <div class="text-danger"> @Model.Fejlbesked</div>
+            }
         </div>
         <div class="form-group">
             <label asp-for="NyBruger.Adgangskode" class="control-label">Adgangskode</label>
