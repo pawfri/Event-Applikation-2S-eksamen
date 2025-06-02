@@ -38,7 +38,7 @@ public partial class mvp2_dk_db_eventapplikationContext : DbContext
     public virtual DbSet<VareType> VareTypes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=mssql15.unoeuro.com;Initial Catalog=mvp2_dk_db_eventapplikation;Persist Security Info=True;User ID=mvp2_dk;Password=tkxf4wy25DdgFz6aRHbe;Encrypt=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
