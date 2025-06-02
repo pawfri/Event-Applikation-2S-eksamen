@@ -15,7 +15,7 @@ builder.Services.AddRazorPages(options =>
     // Angiv hvilke foldere login giver adgang til
     options.Conventions.AuthorizeFolder("/Events/Create");
 });
-
+builder.Services.AddScoped<ITilmeldingRepository, TilmeldingRepository>();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<IBrugerRepository, BrugerRepository>();
 

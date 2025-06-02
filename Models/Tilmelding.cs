@@ -16,7 +16,7 @@ public partial class Tilmelding
 
     public DateOnly Dato { get; set; }
 
-    public int AntalTilmeldt { get; set; }
+    public int? AntalTilmeldt { get; set; }
 
     public int BrugerId { get; set; }
 

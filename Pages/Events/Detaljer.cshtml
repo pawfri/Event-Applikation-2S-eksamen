@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:int}"
 @using Event_Applikation.Models
 @using Event_Applikation.Pages.BrugerLogin
 @model Event_Applikation.Pages.Events.DetaljerModel
@@ -7,14 +7,33 @@
 
 @if (Model.Event != null)
 {
-    <div>
-        <h1>@Model.Event.Titel</h1>
-        <p><b>Beskrivelse:</b> @Model.Event.Beskrivelse</p>
-        <p><b>Dato:</b> @Model.Event.Dato.ToString("dd-MM-yyyy")</p>
-        <p><b>Tidspunkt: kl.</b> @Model.Event.Starttid - @Model.Event.Sluttid</p>
-        <p><b>Lokation:</b> @Model.Event.Lokation</p>
+	<div>
+		<h1>@Model.Event.Titel</h1>
+		<p><b>Beskrivelse:</b> @Model.Event.Beskrivelse</p>
+		<p><b>Dato:</b> @Model.Event.Dato.ToString("dd-MM-yyyy")</p>
+		<p><b>Tidspunkt: kl.</b> @Model.Event.Starttid - @Model.Event.Sluttid</p>
+		<p><b>Lokation:</b> @Model.Event.Lokation</p>
+
+		@* Hvis Max Deltager ikke er blankt, vises antal tilmelde- og max deltagere *@
+		@if (Model.Event?.MaxDeltager != null)
+		{
+			<p>
+				<b>Tilmeldinger:</b>
+				@(Model.AntalTilmeldte + " / " + Model.Event.MaxDeltager)
+			</p>
+
+		}
 
         <button type="submit" class="btn btn-primary btn-sm" onclick="history.back()">Gå Tilbage</button>
+
+		@* Kontrollere at man er loggit ind før man kan se "Tilmeld Event" knappen *@
+		@if (Model.Event?.MaxDeltager != null && LoginModel.CurrentUser != null)
+		{
+			<form method="post" asp-page-handler="Tilmelding" asp-route-id="@Model.Event.Id" style="display:inline;">
+				<button type="submit" class="btn btn-primary btn-sm" title="Tilmelding">Tilmeld Eventet</button>
+			</form>
+		}
+
 		@{
 			// Kontroller om man må kunne se knappen til at "Slette Event".
 			if (LoginModel.CurrentUser != null &&
