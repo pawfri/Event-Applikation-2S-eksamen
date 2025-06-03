@@ -36,7 +36,7 @@
 			if (Model.AntalTilmeldte < Model.Event.MaxDeltager && Model.ErTilmeldt == false)
 			{
 				<form method="post" asp-page-handler="Tilmelding" asp-route-id="@Model.Event.Id" style="display:inline;">
-					<button type="submit" class="btn btn-primary btn-sm" title="Tilmelding">Tilmeld Event</button>
+					<button type="submit" class="btn btn-success btn-sm" title="Tilmelding">Tilmeld Event</button>
 				</form>
 			}
 
@@ -54,9 +54,9 @@
 			(LoginModel.CurrentUser.Rolle.Brugertype == "Admin" ||
 			LoginModel.CurrentUser.Rolle.Brugertype == "Medlem"))
 			{
-				<b> / Administration: </b>
+				<b> | Administration: </b>
 				<form method="post" asp-page-handler="Delete" asp-route-id="@Model.Event.Id" style="display:inline;">
-					<button type="submit" class="btn btn-danger btn-sm" title="Slet">Slet</button>
+					<button type="submit" class="btn btn-danger btn-sm" title="Slet">Slet Event</button>
 				</form>
 				
 			}

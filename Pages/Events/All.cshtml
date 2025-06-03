@@ -28,6 +28,9 @@
 			<th>
 				Slut tidspunkt
 			</th>
+			<th>
+				Kræver tilmelding
+			</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -53,6 +56,16 @@
 					</td>
 					<td>
 						@Event.Sluttid.ToString("HH:mm")
+					</td>
+					<td>
+						@if(Event.MaxDeltager != null)
+						{
+							@("Ja")
+						}
+						else
+						{
+							@("Nej")
+						}
 					</td>
 				</tr>
 			}
