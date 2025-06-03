@@ -61,12 +61,23 @@ public class TilmeldingRepository : ITilmeldingRepository
         return _context.Tilmeldings
             .FirstOrDefault(t => t.BrugerId == brugerId && t.EventId == eventId);
     }
-	/// <summary>
-	/// Tæller Antal tilmeldte til eventet på 
+    /// <summary>
+    /// Tæller Antal tilmeldte til eventet på 
     /// Detalje siden.
-	/// </summary>
-	public int TælTilmeldte(int eventId)
+    /// </summary>
+    public int TælTilmeldte(int eventId)
     {
         return _context.Tilmeldings.Count(t => t.EventId == eventId);
     }
+
+	/// <summary>
+	/// En bool so checker om man allerede er tilmeldt
+    /// et event, så man ikke kan tilmelde sig flere gange.
+	/// </summary>
+	public bool ErTilmeldt(int brugerId, int eventId)
+    {
+		return _context.Tilmeldings
+			.Any(t => t.BrugerId == brugerId && t.EventId == eventId);
+	}
+
 }

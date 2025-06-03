@@ -10,5 +10,6 @@ public interface ITilmeldingRepository
     int Create(Tilmelding tilmelding);
     bool Delete(int id);
     int TælTilmeldte(int eventid);
+    bool ErTilmeldt(int brugerId, int eventId);
     Tilmelding? FindBrugerOgEvent(int brugerId, int eventId);
 }

@@ -46,7 +46,7 @@ public class CreateModel : PageModel
     {
         // Kontrol af gyldig data
         if (!ModelState.IsValid || NyBruger == null)
-	{
+	    {
             // Kontrol om Email allerede findes
             if (EmailEksisterer == true)
             {
@@ -55,7 +55,7 @@ public class CreateModel : PageModel
 
             OnGet();
 		return Page();
-	}
+	    }
 
         // Opretter en ny bruger og omdirigerer til Forsiden
         _brugerRepo.Create(NyBruger);
