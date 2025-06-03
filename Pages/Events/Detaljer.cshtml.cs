@@ -13,6 +13,7 @@ public class DetaljerModel : PageModel
 
 	public Event? Event { get; set; }
 	public int AntalTilmeldte { get; set; }
+	public bool ErTilmeldt { get; set; }
 
 	public DetaljerModel(IEventRepository eventRepo, ITilmeldingRepository tilmeldingRepo)
 	{
@@ -22,7 +23,13 @@ public class DetaljerModel : PageModel
 
 	public IActionResult OnGet(int id)
     {
-		Event = _eventRepo.Read(id);
+        if (LoginModel.CurrentUser != null)
+		{
+            int brugerId = LoginModel.CurrentUser.Id;
+            ErTilmeldt = _tilmeldingRepo.ErTilmeldt(brugerId, id);
+		}
+
+        Event = _eventRepo.Read(id);
 		AntalTilmeldte = _tilmeldingRepo.TælTilmeldte(id);
 
 		return Page();
@@ -43,21 +50,22 @@ public class DetaljerModel : PageModel
     /// <summary>
     /// OnPostTilmelding() opretter en tilmelding for den bruger, der er logget ind.
     /// </summary>
-    public IActionResult OnPostTilmelding(int id)
+    public IActionResult OnPostTilmelding(int id) 
     {
 		int brugerId = LoginModel.CurrentUser.Id;
 
 		var nyTilmelding = new Tilmelding
-        {
+		{
 			EventId = id,
 			BrugerId = brugerId,
 			Dato = DateOnly.FromDateTime(DateTime.Now),
 			AntalTilmeldt = 1
 		};
 
-        _tilmeldingRepo.Create(nyTilmelding);
-        OnGet(id);
-        return Page();
+		_tilmeldingRepo.Create(nyTilmelding);
+		OnGet(id);
+		return Page();
+
 	}
 
     /// <summary>
