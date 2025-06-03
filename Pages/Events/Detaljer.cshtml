@@ -21,18 +21,22 @@
 				<b>Tilmeldinger:</b>
 				@(Model.AntalTilmeldte + " / " + Model.Event.MaxDeltager)
 			</p>
-
 		}
 
-        <button type="submit" class="btn btn-primary btn-sm" onclick="history.back()">Gå Tilbage</button>
+		<a class="btn btn-primary btn-sm" asp-page="/Events/All">Gå til Eventoversigten</a>
 
 		@* Kontrollere at man er loggit ind før man kan se "Tilmeld Event" knappen *@
 		@if (Model.Event?.MaxDeltager != null && LoginModel.CurrentUser != null)
 		{
 			<form method="post" asp-page-handler="Tilmelding" asp-route-id="@Model.Event.Id" style="display:inline;">
-				<button type="submit" class="btn btn-primary btn-sm" title="Tilmelding">Tilmeld Eventet</button>
+				<button type="submit" class="btn btn-primary btn-sm" title="Tilmelding">Tilmeld Event</button>
+			</form>
+		
+			<form method="post" asp-page-handler="Framelding" asp-route-id="@Model.Event.Id" style="display:inline;">
+				<button type="submit" class="btn btn-warning btn-sm" title="Framelding">Frameld Event</button>
 			</form>
 		}
+
 
 		@{
 			// Kontroller om man må kunne se knappen til at "Slette Event".

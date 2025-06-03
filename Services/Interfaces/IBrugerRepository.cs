@@ -2,6 +2,9 @@
 
 namespace Event_Applikation.Services.Interfaces;
 
+/// <summary>
+/// Interface for et Repository der rummer Bruger-objekter
+/// </summary>
 public interface IBrugerRepository
 {
     /// <summary>

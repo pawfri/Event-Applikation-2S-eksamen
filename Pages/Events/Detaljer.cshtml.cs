@@ -10,27 +10,22 @@ public class DetaljerModel : PageModel
 {
     private readonly IEventRepository _eventRepo;
 	private readonly ITilmeldingRepository _tilmeldingRepo;
-	private readonly IBrugerRepository _brugerRepo;
 
 	public Event? Event { get; set; }
-	public static Bruger? CurrentUser { get; set; }
 	public int AntalTilmeldte { get; set; }
 
-	private readonly mvp2_dk_db_eventapplikationContext _context;
-	public DetaljerModel(mvp2_dk_db_eventapplikationContext context, IEventRepository eventRepo, ITilmeldingRepository tilmeldingRepo, IBrugerRepository brugerRepo)
+	public DetaljerModel(IEventRepository eventRepo, ITilmeldingRepository tilmeldingRepo)
 	{
-		_brugerRepo = brugerRepo;
 		_eventRepo = eventRepo;
 		_tilmeldingRepo = tilmeldingRepo;
-		_context = context;
 	}
 
-    public IActionResult OnGet(int id)
+	public IActionResult OnGet(int id)
     {
 		Event = _eventRepo.Read(id);
+		AntalTilmeldte = _tilmeldingRepo.TælTilmeldte(id);
 
 		return Page();
-
     }
 	
 	/// <summary>
@@ -41,6 +36,7 @@ public class DetaljerModel : PageModel
 	public IActionResult OnPostDelete(int id)
 	{
 		_eventRepo.DeleteEvent(id);
+
 		return RedirectToPage("All");
 	}
 
@@ -57,11 +53,31 @@ public class DetaljerModel : PageModel
 			BrugerId = brugerId,
 			Dato = DateOnly.FromDateTime(DateTime.Now),
 			AntalTilmeldt = 1
-
 		};
 
         _tilmeldingRepo.Create(nyTilmelding);
-        return RedirectToPage("All");
+        OnGet(id);
+        return Page();
 	}
+
+    /// <summary>
+    /// OnPostFramelding() finder en tilmelding på aktuelle bruger og event.
+	/// Hvis tilmelding findes, slettes event fra databasen.
+    /// </summary>
+    public IActionResult OnPostFramelding(int id)
+    {
+        int brugerId = LoginModel.CurrentUser.Id;
+
+        var tilmelding = _tilmeldingRepo.FindBrugerOgEvent(brugerId, id);
+
+        if (tilmelding != null)
+        {
+            _tilmeldingRepo.Delete(tilmelding.Id);
+        }
+
+		OnGet(id);
+        return Page();
+    }
+
 
 }
