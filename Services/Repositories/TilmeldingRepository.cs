@@ -26,7 +26,7 @@ public class TilmeldingRepository : ITilmeldingRepository
         return tilmelding.Id;
     }
 
-    /// <summary>
+	/// <summary>
 	/// Hjælpemetode til Create-metoden, der finder 
 	/// næste tilgængelige Id.
 	/// </summary>
@@ -40,7 +40,6 @@ public class TilmeldingRepository : ITilmeldingRepository
     /// Sletter det hvis det findes og returnerer true, 
     /// ellers returnerer false.
     /// </summary>
-    //TODO: Har vi pt. ikke implementeret til brug.
     public bool Delete(int id)
     {
         Tilmelding? tilmelding = _context.Tilmeldings.Find(id);
@@ -53,10 +52,21 @@ public class TilmeldingRepository : ITilmeldingRepository
         }
         return false;
     }
-
-    //TODO: Ikke implementeret endnu..
-    public int TælTilmeldte(int eventid)
+	/// <summary>
+	/// Matcher en tilmelding med et brugerId
+    /// og et eventId.
+	/// </summary>
+	public Tilmelding? FindBrugerOgEvent(int brugerId, int eventId)
     {
-        return _context.Tilmeldings.Count(t => t.EventId == eventid);
+        return _context.Tilmeldings
+            .FirstOrDefault(t => t.BrugerId == brugerId && t.EventId == eventId);
+    }
+	/// <summary>
+	/// Tæller Antal tilmeldte til eventet på 
+    /// Detalje siden.
+	/// </summary>
+	public int TælTilmeldte(int eventId)
+    {
+        return _context.Tilmeldings.Count(t => t.EventId == eventId);
     }
 }
