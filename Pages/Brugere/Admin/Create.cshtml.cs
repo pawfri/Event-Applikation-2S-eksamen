@@ -24,10 +24,10 @@ public class CreateModel : PageModel
         }
     }
 
-    public CreateModel(mvp2_dk_db_eventapplikationContext context, IBrugerRepository brugerrepo)
+    public CreateModel(mvp2_dk_db_eventapplikationContext context, IBrugerRepository brugerRepo)
     {
 	    _context = context;
-	    _brugerRepo = brugerrepo;
+	    _brugerRepo = brugerRepo;
     }
 
     /// <summary>
