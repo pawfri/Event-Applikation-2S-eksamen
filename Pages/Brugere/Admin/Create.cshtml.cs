@@ -26,8 +26,8 @@ public class CreateModel : PageModel
 
     public CreateModel(mvp2_dk_db_eventapplikationContext context, IBrugerRepository brugerrepo)
     {
-	_context = context;
-	_brugerRepo = brugerrepo;
+	    _context = context;
+	    _brugerRepo = brugerrepo;
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class CreateModel : PageModel
     /// </summary>
     public void OnGet()
     {
-	LoadRollerCampus();
+	    LoadRollerCampus();
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public class CreateModel : PageModel
     public IActionResult OnPostSubmit()
     {
         // Kontrol af gyldig data
-        if (!ModelState.IsValid || NyBruger == null)
+        if (!ModelState.IsValid || NyBruger != null)
 	    {
             // Kontrol om Email allerede findes
             if (EmailEksisterer == true)
@@ -54,7 +54,7 @@ public class CreateModel : PageModel
             }
 
             OnGet();
-		return Page();
+		    return Page();
 	    }
 
         // Opretter en ny bruger og omdirigerer til Forsiden
